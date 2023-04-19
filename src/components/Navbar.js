@@ -7,25 +7,31 @@ const AppNavbar = () => {
 
   const handleLogin = () => {
     setLoggedIn(true);
-  }
+  };
+
+  const navLinks = (
+    <Nav className="ms-auto">
+      <Nav.Link href="#rollos">Rollos</Nav.Link>
+      <Nav.Link href="#publicacion">Crear publicación</Nav.Link>
+      <Nav.Link href="#perfil">Perfil</Nav.Link>
+      <Nav.Link href="#about">Sobre nosotros</Nav.Link>
+    </Nav>
+  );
+
+  const loginButton = (
+    <Button variant="warning" onClick={handleLogin}>
+      Iniciar Sesión
+    </Button>
+  );
 
   return (
     <Navbar bg="dark" variant="dark">
       <Container>
         <Navbar.Brand>FILMOTECA</Navbar.Brand>
-        {loggedIn ? (
-          <Nav className="ms-auto">
-            <Nav.Link href="#rollos">Rollos</Nav.Link>
-            <Nav.Link href="#publicacion">Crear publicación</Nav.Link>
-            <Nav.Link href="#perfil">Perfil</Nav.Link>
-            <Nav.Link href="#about">Sobre nosotros</Nav.Link>
-          </Nav>
-        ) : (
-          <Button variant="warning" onClick={handleLogin}>Iniciar Sesión</Button>
-        )}
+        {loggedIn ? navLinks : loginButton}
       </Container>
     </Navbar>
   );
-}
+};
 
 export default AppNavbar;

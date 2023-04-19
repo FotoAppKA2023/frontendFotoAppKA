@@ -9,27 +9,11 @@
     color: #FFFFFF;
   }
   
-
   .navbar-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
     height: 100%;
-  }
-  
-  .navbar-btn {
-    border-radius: 20px;
-    border: none;
-    padding: 8px 16px;
-    font-size: 1.2rem;
-    font-weight: bold;
-    color: #000000;
-    background-color: #FFD600;
-  }
-  
-  .navbar-btn:hover {
-    background-color: #E6B800;
-    color: #FFFFFF;
   }
   
   .nav-link {
@@ -43,4 +27,18 @@
     color: #E6B800;
   }
   
- 
+  .btn-login {
+    border-radius: 20px;
+    border: none;
+    padding: 8px 16px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #000000;
+    background-color: #FFD600;
+  }
+  
+  .btn-login:hover {
+    background-color: #E6B800;
+    color: #FFFFFF;
+  }
+  
