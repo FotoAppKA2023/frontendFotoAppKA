@@ -14,7 +14,7 @@ const AppNavbar = () => {
       <Container>
         <Navbar.Brand>FILMOTECA</Navbar.Brand>
         {loggedIn ? (
-          <Nav className="me-auto">
+          <Nav className="ms-auto">
             <Nav.Link href="#rollos">Rollos</Nav.Link>
             <Nav.Link href="#publicacion">Crear publicación</Nav.Link>
             <Nav.Link href="#perfil">Perfil</Nav.Link>
