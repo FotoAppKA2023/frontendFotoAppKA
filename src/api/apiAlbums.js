@@ -1,70 +1,53 @@
-import axios from "axios";
-import { backendURL } from "../assets/constants";
+
+import { doRequestAxios } from "./apiAxios";
+
 
 const entity= '/albums';
 
 export const getAllAlbums = async()=>{
     const service = '/allAlbums';
-    try {
-        const result = await axios.get(`${backendURL}${entity}${service}`);
-        console.log(result);
-        return result
-    } catch (error) {
-        console.log(error);
-    }
+    const method = 'get';
+
+    return await doRequestAxios(service,entity,method);
+    
 }
 
 export const postAlbum = async()=>{
     const service = '/';
-    try {
-        const result = await axios.post(`${backendURL}${entity}${service}`);
-        console.log(result);
-        return result
-    } catch (error) {
-        console.log(error);
-    }
+    const method = 'post';
+
+    return await doRequestAxios(service,entity,method);
+    
 }
 
 export const getMyAlbumsByIdPhotoUser = async(idPhotoUser,searchParams)=>{
     const service = `/myAlbums/${idPhotoUser}`;
-    try {
-        const result = await axios.get(`${backendURL}${entity}${service}`);
-        console.log(result);
-        return result
-    } catch (error) {
-        console.log(error);
-    }
+    const method = 'get';
+
+    return await doRequestAxios(service,entity,method);
+    
 }
 
 export const getOneAlbum = async(idAlbum)=>{
     const service = `/${idAlbum}`;
-    try {
-        const result = await axios.get(`${backendURL}${entity}${service}`);
-        console.log(result);
-        return result
-    } catch (error) {
-        console.log(error);
-    }
+    const method = 'get';
+
+    return await doRequestAxios(service,entity,method);
+    
 }
 
 export const updateAlbum = async(idAlbum)=>{
     const service = `/${idAlbum}`;
-    try {
-        const result = await axios.put(`${backendURL}${entity}${service}`);
-        console.log(result);
-        return result
-    } catch (error) {
-        console.log(error);
-    }
+    const method = 'put';
+
+    return await doRequestAxios(service,entity,method);
+    
 }
 
 export const deleteAlbum = async(idAlbum)=>{
     const service = `/${idAlbum}`;
-    try {
-        const result = await axios.delete(`${backendURL}${entity}${service}`);
-        console.log(result);
-        return result
-    } catch (error) {
-        console.log(error);
-    }
+    const method = 'delete';
+
+    return await doRequestAxios(service,entity,method);
+    
 }
