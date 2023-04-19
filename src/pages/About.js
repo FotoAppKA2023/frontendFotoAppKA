@@ -1,13 +1,13 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React from 'react';
+import Navbar from '../components/Navbar';
 
 const About = () => {
   return (
     <div>
-        About
-        <Link to={'/'}>HOME</Link>
+      <Navbar />
+      {/* Contenido de la página About */}
     </div>
-  )
+  );
 }
 
-export default About
+export default About;

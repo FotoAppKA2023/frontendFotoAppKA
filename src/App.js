@@ -5,27 +5,14 @@
 
 import { RouterProvider } from "react-router";
 import { router } from "./routes/routes";
-import PhotoContext from "./context/PhotoContext";
-import { useState } from "react";
 
 
 
-const initialDataPhotoUser = {
-  email:''
-}
-
-function App() {
-  const [photoUser, setPhotoUser] = useState(initialDataPhotoUser);
+const App = () => {
   return (
     <div className="">
-      <PhotoContext.Provider value={[
-        photoUser,
-        setPhotoUser,
-        initialDataPhotoUser
-      ]} >
-      FrontEnd FotoAppKA
+      
       <RouterProvider router={router} />
-      </PhotoContext.Provider>
     </div>
   );
 }
