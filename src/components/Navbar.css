@@ -31,3 +31,14 @@
     color: #FFFFFF;
   }
   
+  .nav-link {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #FFFFFF;
+    padding: 0 10px;
+  }
+  
+  .nav-link:hover {
+    color: #E6B800;
+  }
+  
