@@ -1,0 +1,42 @@
+#rollosFav {
+	background-color: #3f3b38;
+
+	.h2Rollos {
+		color: white;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		font-weight: bolder;
+		padding-top: 5%;
+	}
+	#cardsRollos {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-wrap: wrap;
+	}
+	.cardsPopulares {
+		margin: 10%;
+		background-color: #3f3b38;
+		border: none;
+	}
+	#linkRow {
+		color: white;
+		&:hover {
+			color: rgb(230, 230, 97);
+		}
+	}
+	.nombreRollo {
+		color: white;
+		font-size: x-large;
+		font-weight: bolder;
+	}
+	.descriptCard {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		padding: 0 26px 2px 16px;
+		color: white;
+		font-weight: bolder;
+	}
+}

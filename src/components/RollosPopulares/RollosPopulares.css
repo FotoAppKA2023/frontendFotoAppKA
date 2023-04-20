@@ -1,0 +1,41 @@
+#rollosFav {
+  background-color: #3f3b38;
+}
+#rollosFav .h2Rollos {
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bolder;
+  padding-top: 5%;
+}
+#rollosFav #cardsRollos {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+#rollosFav .cardsPopulares {
+  margin: 10%;
+  background-color: #3f3b38;
+  border: none;
+}
+#rollosFav #linkRow {
+  color: white;
+}
+#rollosFav #linkRow:hover {
+  color: rgb(230, 230, 97);
+}
+#rollosFav .nombreRollo {
+  color: white;
+  font-size: x-large;
+  font-weight: bolder;
+}
+#rollosFav .descriptCard {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 26px 2px 16px;
+  color: white;
+  font-weight: bolder;
+}/*# sourceMappingURL=RollosPopulares.css.map */
