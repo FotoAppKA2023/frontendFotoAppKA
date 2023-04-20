@@ -1,0 +1,52 @@
+@media (max-width: 768px) {
+  #cardsUsuarios {
+    margin: 20px 0;
+  }
+}
+#nuestrosUsuarios {
+  background-color: #ffe24d;
+  width: auto;
+  height: 100%;
+}
+#nuestrosUsuarios .usuariosH2 {
+  padding: 5% 50% 5% 5%;
+}
+#nuestrosUsuarios .usuarios {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 5%;
+  padding: 0 5% 5% 5%;
+}
+#nuestrosUsuarios #cardsUsuarios {
+  border: none;
+  background-color: #ffe24d;
+}
+#nuestrosUsuarios .lineasCard {
+  width: 100%;
+  height: 0px;
+  border: 1px dashed rgba(63, 59, 56, 0.7);
+  transform: rotate(0.33deg);
+}
+#nuestrosUsuarios #imgUsuarioCard {
+  width: 20%;
+  padding-left: 5%;
+}
+#nuestrosUsuarios .avatarUsuario {
+  width: 50px;
+  height: 50px;
+}
+#nuestrosUsuarios .infoUsuario {
+  padding: 2% 0 0 2%;
+  margin: 0;
+}
+#nuestrosUsuarios .infoUsuario .nombreUsuario {
+  margin: 0;
+  font-weight: bolder;
+  font-size: large;
+}
+#nuestrosUsuarios .infoUsuario .miembroDesde {
+  margin: 0;
+  font-size: x-small;
+}/*# sourceMappingURL=NuestrosUsuarios.css.map */

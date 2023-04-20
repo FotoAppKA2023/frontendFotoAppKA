@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { getSaludo } from '../api/apiSaludo';
 import RollosPopulares from '../components/RollosPopulares/RollosPopulares';
+import NuestrosUsuarios from '../components/NuestrosUsuarios/NuestrosUsuarios';
 
 const Home = () => {
 	const [miSaludo, setMiSaludo] = useState('');
@@ -23,6 +24,7 @@ const Home = () => {
 		<div>
 			Home
 			<Link to={'/about'}>ABOUT</Link>
+			<NuestrosUsuarios />
 			<RollosPopulares />
 			<br />
 			<button onClick={handleSaludo} className="btn btn-primary">
