@@ -1,0 +1,65 @@
+.landing-page {
+  height: 718px;
+  width: 100%;
+  position: relative;
+  background: url('./rolls_image.png') no-repeat center center fixed;
+  background-size: cover;
+}
+
+.overlay {
+  height: 718px;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.landing-header {
+  position: absolute;
+  top: 12%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+  width: 885px;
+  height: 225px;
+}
+
+.landing-header h1 {
+
+  font-size: 40px;
+  font-family: 'Carme', sans-serif;
+  font-weight: 900;
+  line-height: 1.5;
+}
+
+.landing-footer {
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 0 5%;
+  color: white;
+  font-family: 'Candal', sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 40px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+
+.landing-footer p:first-child {
+  margin-right: 20px;
+  height: 108px;
+  width: 445px;
+}
+
+.landing-footer p:last-child {
+  height: 50px;
+  width: 720px;
+  border-radius: 0px;
+  font-size: 30px;
+  text-align: right;
+}
