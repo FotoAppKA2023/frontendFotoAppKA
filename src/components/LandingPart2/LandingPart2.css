@@ -1,0 +1,47 @@
+.landing-part2 {
+    height: 810px;
+    width: 100%;
+    position: relative;
+    border-radius: 0px;
+    background-color: #3F3B38;
+  }
+  
+  .landing-part2-title {
+    font-family: Candal;
+    font-size: 40px;
+    font-weight: 400;
+    line-height: 40px;
+    text-align: left;
+    margin-bottom: -2rem;
+    color: #FFFFFF;
+    width: 250px;
+    margin-top: 30px;
+    font-weight: 900
+  }
+  
+  .landing-part2-text {
+    font-family: Candal;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 40px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #FFFFFF;
+    width: 690px;
+    font-weight: 900
+  }
+
+  .landing-part2-leer {
+    color: #FFD600;
+    font-size: 24px;
+    align-items: right;
+    font-weight: 700
+  }
+  
+  .landing-part2-img {
+    height: 375px;
+    width: 100%;
+    border-radius: 0px;
+    margin-bottom: 1.5rem;
+  }
+  
