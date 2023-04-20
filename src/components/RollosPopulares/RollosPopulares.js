@@ -15,10 +15,14 @@ const RollosPopulares = () => {
 				<h2 className="h2Rollos">Rollos Populares</h2>
 				<div id="cardsRollos">
 					<Card style={{ width: '18rem' }} className="cardsPopulares">
+<<<<<<< HEAD
 						<Card.Img
 							variant="top"
 							src={rollo1}
 						/>
+=======
+						<Card.Img variant="top" src={rollo1} />
+>>>>>>> rollosFav
 						<Card.Body className="d-flex flex-row justify-content-between">
 							<Card.Title className="nombreRollo">Rp 168.300</Card.Title>
 							<Link>
@@ -30,10 +34,14 @@ const RollosPopulares = () => {
 						</Card.Text>
 					</Card>
 					<Card style={{ width: '18rem' }} className="cardsPopulares">
+<<<<<<< HEAD
 						<Card.Img
 							variant="top"
 							src={rollo2}
 						/>
+=======
+						<Card.Img variant="top" src={rollo2} />
+>>>>>>> rollosFav
 						<Card.Body className="d-flex flex-row justify-content-between">
 							<Card.Title className="nombreRollo">Rp 168.300</Card.Title>
 							<Link>
@@ -45,10 +53,14 @@ const RollosPopulares = () => {
 						</Card.Text>
 					</Card>
 					<Card style={{ width: '18rem' }} className="cardsPopulares">
+<<<<<<< HEAD
 						<Card.Img
 							variant="top"
 							src={rollo3}
 						/>
+=======
+						<Card.Img variant="top" src={rollo3} />
+>>>>>>> rollosFav
 						<Card.Body className="d-flex flex-row justify-content-between">
 							<Card.Title className="nombreRollo">Rp 168.300</Card.Title>
 							<Link>
@@ -60,10 +72,14 @@ const RollosPopulares = () => {
 						</Card.Text>
 					</Card>
 					<Card style={{ width: '18rem' }} className="cardsPopulares">
+<<<<<<< HEAD
 						<Card.Img
 							variant="top"
 							src={rollo4}
 						/>
+=======
+						<Card.Img variant="top" src={rollo4} />
+>>>>>>> rollosFav
 						<Card.Body className="d-flex flex-row justify-content-between">
 							<Card.Title className="nombreRollo">Rp 168.300</Card.Title>
 							<Link>
