@@ -1,5 +1,5 @@
 import React from "react";
-import "./LandingPart1.css";
+import "./ConvierteteExperto.css";
 import { Container, Row, Col } from 'react-bootstrap';
 
 const LandingPart1 = () => {
