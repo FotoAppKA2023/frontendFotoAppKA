@@ -1,0 +1,45 @@
+import { doRequestAxios } from "./apiAxios";
+
+
+const entity= '/scaners';
+
+export const getAllScaners = async()=>{
+    const service = '/';
+    const method = 'get';
+
+    return await doRequestAxios(service,entity,method);
+    
+}
+
+export const createNewScaner = async()=>{
+    const service = '/';
+    const method = 'post';
+
+    return await doRequestAxios(service,entity,method);
+    
+}
+
+
+export const getOneScaner = async(idScaner)=>{
+    const service = `/${idScaner}`;
+    const method = 'get';
+
+    return await doRequestAxios(service,entity,method);
+    
+}
+
+export const updateScaner = async(idScaner)=>{
+    const service = `/${idScaner}`;
+    const method = 'put';
+
+    return await doRequestAxios(service,entity,method);
+    
+}
+
+export const deleteScaner = async(idScaner)=>{
+    const service = `/${idScaner}`;
+    const method = 'delete';
+
+    return await doRequestAxios(service,entity,method);
+    
+}

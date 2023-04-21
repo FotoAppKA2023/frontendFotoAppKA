@@ -1,0 +1,55 @@
+@media (max-width: 768px) {
+	#cardsUsuarios {
+		margin: 20px 0;
+	}
+}
+
+#nuestrosUsuarios {
+	background-color: #ffe24d;
+	width: auto;
+	height: 100%;
+	.usuariosH2 {
+		padding: 5% 50% 5% 5%;
+	}
+	.usuarios {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		margin-top: 5%;
+		padding: 0 5% 5% 5%;
+	}
+	#cardsUsuarios {
+		border: none;
+		background-color: #ffe24d;
+	}
+	.lineasCard {
+		width: 100%;
+		height: 0px;
+		// left: 76px;
+		// top: 1956px;
+		border: 1px dashed rgba(63, 59, 56, 0.7);
+		transform: rotate(0.33deg);
+	}
+	#imgUsuarioCard {
+		width: 20%;
+		padding-left: 5%;
+	}
+	.avatarUsuario {
+		width: 50px;
+		height: 50px;
+	}
+	.infoUsuario {
+		padding: 2% 0 0 2%;
+		margin: 0;
+		.nombreUsuario {
+			margin: 0;
+			font-weight: bolder;
+			font-size: large;
+		}
+		.miembroDesde {
+			margin: 0;
+			font-size: x-small;
+		}
+	}
+}
