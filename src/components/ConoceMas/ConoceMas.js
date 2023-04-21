@@ -44,6 +44,7 @@ const LandingPart2 = () => {
       </Container>
     </div>
   );
+  
 };
 
 export default LandingPart2;
