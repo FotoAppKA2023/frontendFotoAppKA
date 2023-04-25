@@ -1,6 +1,9 @@
 import React from 'react';
-import './LandingPart2.css';
+import './ConoceMas.css';
 import { Container, Row, Col } from 'react-bootstrap';
+import img1 from '../../assets/imgConoceMas/img1.png';
+import img2 from '../../assets/imgConoceMas/img2.png';
+import img3 from '../../assets/imgConoceMas/img3.png';
 
 const LandingPart2 = () => {
   return (
@@ -29,18 +32,19 @@ const LandingPart2 = () => {
         </Row>
         <Row className="mt-5"> 
           <Col lg={4}>
-            <img src={process.env.PUBLIC_URL + '/img1.png'} className="landing-part2-img" alt="img1" />
+            <img src={img1} className="landing-part2-img" alt="img1" />
           </Col>
           <Col lg={4}>
-            <img src={process.env.PUBLIC_URL + '/img2.png'} className="landing-part2-img" alt="img2" />
+            <img src={img2} className="landing-part2-img" alt="img2" />
           </Col>
           <Col lg={4}> 
-            <img src={process.env.PUBLIC_URL + '/img3.png'} className="landing-part2-img" alt="img3" />
+            <img src={img3} className="landing-part2-img" alt="img3" />
           </Col>
         </Row>
       </Container>
     </div>
   );
+  
 };
 
 export default LandingPart2;
