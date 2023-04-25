@@ -8,12 +8,11 @@ import NuestrosUsuarios from "../components/NuestrosUsuarios/NuestrosUsuarios.js
 const Home = () => {
   return (
     <div>
-      <Navbar />
-      <LandingPart1 />
+      <Navbar/>
+      <LandingPart1/>
       <LandingPart2/>
       <NuestrosUsuarios/>
-      <RollosPopulares />
-      
+      <RollosPopulares />  
     </div>
   );
 };
