@@ -1,0 +1,136 @@
+.fotoContainer {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+.fotoTexto {
+	background-color: #524f4c;
+	color: white;
+	width: 70%;
+	height: 690px;
+	display: flex;
+	flex-direction: column;
+	padding: 5% 5% 10% 2%;
+}
+.fotoH2 {
+	font-size: 64px;
+	font-weight: 600;
+}
+
+.fotoParragraph {
+	font-family: 'Lato', sans-serif;
+	font-weight: 400;
+	font-size: 32px;
+	text-align: right;
+	padding: 10%;
+	width: 90%;
+}
+
+.fotoAside {
+	background-color: #dcd6ce;
+	width: 30%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+}
+#fotoBtn {
+	background-color: #ffd600;
+	color: black;
+	width: 225px;
+	height: 45px;
+	margin-top: 10%;
+	background: #ffd600;
+	border-radius: 50px;
+	border: none;
+}
+.circlesContainer {
+	position: relative;
+	bottom: 0;
+	right: 0;
+}
+.yellowCircle {
+	position: absolute;
+	width: 580px;
+	height: 580px;
+	bottom: 0;
+	right: 0;
+	border-radius: 100% 0 0;
+	background-color: #ffd600;
+}
+.whiteCircle {
+	position: absolute;
+	width: 300px;
+	height: 300px;
+	bottom: 0;
+	right: 0;
+	border-radius: 100% 0 0;
+	background-color: #dcd6ce;
+}
+.blackCircle {
+	position: absolute;
+	width: 150px;
+	height: 150px;
+	bottom: 0;
+	right: 0;
+	border-radius: 100% 0 0;
+	background-color: black;
+}
+
+@media only screen and (min-width: 300px) and (max-width: 1024px) {
+	.textExpertContainer {
+		display: none;
+	}
+	.fotoTexto {
+		width: 70%;
+		height: 300px;
+	}
+	.fotoParragraph {
+		margin: auto;
+		padding: 1%;
+	}
+	#fotoBtn {
+		display: none;
+	}
+}
+
+@media only screen and (min-width: 1024px) and (max-width: 1300px) {
+	.fotoTexto {
+		height: auto;
+	}
+	.fotoH2 {
+		font-size: 34px;
+	}
+	.fotoParragraph {
+		font-size: 24px;
+	}
+}
+
+@media only screen and (min-width: 300px) and (max-width: 1024px) {
+	.yellowCircle {
+		width: 250px;
+		height: 250px;
+	}
+	.whiteCircle {
+		width: 160px;
+		height: 160px;
+	}
+	.blackCircle {
+		width: 70px;
+		height: 70px;
+	}
+}
+@media only screen and (min-width: 1024px) and (max-width: 1300px) {
+	.yellowCircle {
+		width: 500px;
+		height: 500px;
+	}
+	.whiteCircle {
+		width: 250px;
+		height: 250px;
+	}
+	.blackCircle {
+		width: 100px;
+		height: 100px;
+	}
+}
