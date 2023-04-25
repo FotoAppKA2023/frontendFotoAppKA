@@ -2,7 +2,7 @@
   height: 718px;
   width: 100%;
   position: relative;
-  background: url('./rolls_image.png') no-repeat center center fixed;
+  background: url('./rolls_image.png') no-repeat center center;
   background-size: cover;
 }
 
