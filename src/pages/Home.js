@@ -7,17 +7,6 @@ import NuestrosUsuarios from '../components/NuestrosUsuarios/NuestrosUsuarios.js
 import ExpertoFoto from '../components/ExpertoFoto/ExpertoFoto.js';
 
 const Home = () => {
-<<<<<<< HEAD
-  return (
-    <div>
-      <Navbar/>
-      <LandingPart1/>
-      <LandingPart2/>
-      <NuestrosUsuarios/>
-      <RollosPopulares />  
-    </div>
-  );
-=======
 	return (
 		<div>
 			<Navbar />
@@ -28,7 +17,6 @@ const Home = () => {
 			<ExpertoFoto />
 		</div>
 	);
->>>>>>> dev
 };
 
 export default Home;
