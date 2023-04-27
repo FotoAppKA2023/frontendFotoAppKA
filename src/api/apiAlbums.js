@@ -16,8 +16,15 @@ export const postAlbum = async(album)=>{
     const service = '/';
     const method = 'post';
     const formData = new FormData();
-    formData.append('title',album.title);
-    formData.append('description',album.description);
+
+
+    Object.entries(album).forEach(([key, value]) => {
+        formData.append(key, value);
+        console.log(key,value);
+    })
+
+    //formData.append('title',album.title);
+    //formData.append('description',album.description);
     
 
     /*for (let i=0; i<album.images.length; i++){
@@ -28,10 +35,7 @@ export const postAlbum = async(album)=>{
         formData.append(`files`,album.images[i]);
     }
     
-    /*Object.entries(album).forEach(([key, value]) => {
-        formData.append(key, value);
-        console.log(key,value);
-    })*/
+    
     /*for( let key in album){
         formData.append(key, album[key])
         //console.log('Key:',key);

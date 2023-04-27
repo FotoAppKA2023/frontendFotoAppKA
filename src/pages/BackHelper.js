@@ -5,62 +5,108 @@ import { postAlbum } from "../api/apiAlbums";
 
 const BackHelper = () => {
   const [formValues, setFormValues] = useState({
-    title:'',
-    description:'',
-    images: ''
+    description: "",
+    images: "",
+    photoUser_id: "64488bcc2c6d1d8daf5a2002",
+    camera_id: "",
+    scaner_id: "",
+    rollo_id: "",
   });
-  const onChangeText = (e)=>{
+  const onChangeText = (e) => {
     //console.log(e.target.name,e.target.value);
     setFormValues({
       ...formValues,
-      [e.target.name]: e.target.value
-    })
-  }
+      [e.target.name]: e.target.value,
+    });
+  };
 
-  const onChangeImages = (e)=>{
-    console.log(e.target.name,e.target.files);
+  const onChangeImages = (e) => {
+    console.log(e.target.name, e.target.files);
     setFormValues({
       ...formValues,
-      images: e.target.files
-    })
-  }
+      images: e.target.files,
+    });
+  };
 
-  const onSubmitForm = async (e)=>{
+  const onSubmitForm = async (e) => {
     e.preventDefault();
-    console.log('Enviando datos:..',formValues);
+    console.log("Enviando datos:..", formValues);
+    
     try {
-
-      const backResponse = await postAlbum(formValues);  
-      console.log('backResponse:..',backResponse)
+      const backResponse = await postAlbum(formValues);
+      console.log("backResponse:..", backResponse);
     } catch (error) {
       console.log(error);
     }
-    
-  }
+  };
 
   return (
     <div className="w-75 ms-auto me-auto">
       <h5>BackHelper</h5>
 
       <Form onSubmit={onSubmitForm}>
-        <Form.Group className="mb-3" controlId="formBasicTitle">
-          <Form.Label>Title:..</Form.Label>
-          <Form.Control type="text" placeholder="Enter title" name="title" onChange={onChangeText} />
-          <Form.Text className="text-muted">
-            Texto de apoyo...
-          </Form.Text>
-        </Form.Group>
-
         <Form.Group className="mb-3" controlId="formBasicDesciption">
           <Form.Label>Description:..</Form.Label>
-          <Form.Control type="text" placeholder="Desciption" name="description" onChange={onChangeText} />
+          <Form.Control
+            type="text"
+            placeholder="Desciption"
+            name="description"
+            onChange={onChangeText}
+          />
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicImages">
           <Form.Label>Images:..</Form.Label>
-          <Form.Control type="file" placeholder="Select Images" name="images" onChange={onChangeImages} multiple />
+          <Form.Control
+            type="file"
+            placeholder="Select Images"
+            name="images"
+            onChange={onChangeImages}
+            multiple
+          />
         </Form.Group>
-        
+        <Form.Group className="mb-3" controlId="formBasicCamaras">
+          <Form.Label>Camaras:</Form.Label>
+          <Form.Select
+            aria-label="Default select example"
+            name="camera_id"
+            onChange={onChangeText}
+          >
+            <option>Selecciona una Camara</option>
+            <option value="Camara1">Camara1</option>
+            <option value="Camara2">Camara2</option>
+            <option value="Camara3">Camara3</option>
+          </Form.Select>
+        </Form.Group>
+
+        <Form.Group className="mb-3" controlId="formBasicScaners">
+          <Form.Label>Scaners:</Form.Label>
+          <Form.Select
+            aria-label="Default select example"
+            name="scaner_id"
+            onChange={onChangeText}
+          >
+            <option>Selecciona un Scaner</option>
+            <option value="Scaner1">Scaner1</option>
+            <option value="Scaner2">Scaner2</option>
+            <option value="Scaner3">Scaner3</option>
+          </Form.Select>
+        </Form.Group>
+
+        <Form.Group className="mb-3" controlId="formBasicRollos">
+          <Form.Label>Rollos:</Form.Label>
+          <Form.Select
+            aria-label="Default select example"
+            name="rollo_id"
+            onChange={onChangeText}
+          >
+            <option>Selecciona un Rollo</option>
+            <option value="Rollo1">Rollo1</option>
+            <option value="Rollo2">Rollo2</option>
+            <option value="Rollo3">Rollo3</option>
+          </Form.Select>
+        </Form.Group>
+
         <Button variant="primary" type="submit">
           Submit
         </Button>
