@@ -12,7 +12,7 @@ const AppNavbar = () => {
   const navLinks = (
     <Nav className="ms-auto">
       <Nav.Link href="#rollos">Rollos</Nav.Link>
-      <Nav.Link href="#publicacion">Crear publicación</Nav.Link>
+      <Nav.Link href="crear-rollo/">Crear publicación</Nav.Link>
       <Nav.Link href="#perfil">Perfil</Nav.Link>
       <Nav.Link href="#about">Sobre nosotros</Nav.Link>
     </Nav>
