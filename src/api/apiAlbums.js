@@ -14,7 +14,7 @@ export const getAllAlbums = async()=>{
 
 export const postAlbum = async(album)=>{
     const service = '/';
-    const method = 'post';
+    const method = 'postAlbum';
     const formData = new FormData();
 
 
