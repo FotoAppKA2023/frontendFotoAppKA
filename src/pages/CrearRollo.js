@@ -6,7 +6,7 @@ import Container from "react-bootstrap/Container";
 import imagen from "../assets/imagen-placeholder.png";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import axios from 'axios';
+import { createNewRollo } from "../api/apiRollos";
 
 const CrearRollo = () => {
   const [datos,setDatos]= React.useState({
@@ -29,9 +29,7 @@ const CrearRollo = () => {
     const formData=new FormData()
     formData.append('imagenRollo',foto)
     formData.append("datosRollos",datos)
-    axios.post("",formData,{}).then(res=>{
-      console.log(res)
-    })
+    createNewRollo(FormData)
 
   }
   const abrirInputFile = () => {
