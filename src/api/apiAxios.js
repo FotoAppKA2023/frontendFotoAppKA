@@ -1,7 +1,7 @@
 import axios from "axios";
 import { backendURL } from "../assets/constants";
 
-export const doRequestAxios = async (service, entity, method) => {
+export const doRequestAxios = async (service, entity, method, data) => {
   try {
     let result = null;
     
@@ -9,9 +9,17 @@ export const doRequestAxios = async (service, entity, method) => {
       case "get":
         result = await axios.get(`${backendURL}${entity}${service}`);
         break;
-      case "post":
-        result = await axios.post(`${backendURL}${entity}${service}`);
+      case "postAlbum":
+        console.log('Enviando formulario via axios:..',data);
+        result = await axios.post(`${backendURL}${entity}${service}`,data,{
+          headers: {
+            "Content-Type": "multipart/form-data"
+          }
+        });
         break;
+      case "post":
+        result = await axios.post(`${backendURL}${entity}${service}`,data);
+        break
       case "put":
         result = await axios.put(`${backendURL}${entity}${service}`);
         break;
