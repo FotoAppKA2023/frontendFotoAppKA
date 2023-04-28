@@ -29,7 +29,7 @@ const CrearRollo = () => {
     const formData=new FormData()
     formData.append('imagenRollo',foto)
     formData.append("datosRollos",datos)
-    axios.post("url",formData,{}).then(res=>{
+    axios.post("",formData,{}).then(res=>{
       console.log(res)
     })
 
