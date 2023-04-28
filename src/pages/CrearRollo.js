@@ -30,9 +30,15 @@ const CrearRollo = () => {
 
   const imprimirDatos = async () => {
     console.log(datos);
+    //console.log(foto.file);
     const formData = new FormData();
-    formData.append("imagenRollo", foto);
-    formData.append("datosRollos", datos);
+    formData.append("imagenRollo", foto.file);
+    Object.entries(datos).forEach(([key, value]) => {
+      formData.append(key, value);
+      //console.log(key,value);
+  })
+    
+    
     const resultado = await createNewRollo(formData);
     console.log(resultado);
     if (resultado.status === 200) {
@@ -49,7 +55,6 @@ const CrearRollo = () => {
   const obtenerFile = (event) => {
     console.log(event.target);
     setFoto({
-      foto,
       [event.target.name]: event.target.files[0],
     });
   };
