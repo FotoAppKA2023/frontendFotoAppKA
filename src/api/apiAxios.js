@@ -9,7 +9,7 @@ export const doRequestAxios = async (service, entity, method, data) => {
       case "get":
         result = await axios.get(`${backendURL}${entity}${service}`);
         break;
-      case "post":
+      case "postAlbum":
         console.log('Enviando formulario via axios:..',data);
         result = await axios.post(`${backendURL}${entity}${service}`,data,{
           headers: {
@@ -17,6 +17,9 @@ export const doRequestAxios = async (service, entity, method, data) => {
           }
         });
         break;
+      case "post":
+        result = await axios.post(`${backendURL}${entity}${service}`,data);
+        break
       case "put":
         result = await axios.put(`${backendURL}${entity}${service}`);
         break;
