@@ -4,6 +4,7 @@ import Error from '../pages/Error';
 import About from '../pages/About';
 import BackHelper from '../pages/BackHelper';
 import CrearRollo from '../pages/CrearRollo';
+import Dashboard from '../pages/Dashboard';
 
 export const router = createBrowserRouter([
 	{
@@ -22,5 +23,9 @@ export const router = createBrowserRouter([
 	{
 		path:'crear-rollo/',
 		element:<CrearRollo/>
+	},
+	{
+		path:'dashboard/',
+		element:<Dashboard/>
 	}
 ]);
