@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { postAlbum } from "../api/apiAlbums";
+import { getOnePhotoUser } from "../api/apiPhotoUser";
 
 const BackHelper = () => {
   const [formValues, setFormValues] = useState({
@@ -39,6 +40,12 @@ const BackHelper = () => {
       console.log(error);
     }
   };
+
+  const handlePrueba = async()=>{
+    console.log('Haremos la consulta de un photoUser...');
+    const result = await getOnePhotoUser('64488bcc2c6d1d8daf5a2002');
+    console.log(result);
+  }
 
   return (
     <div className="w-75 ms-auto me-auto">
@@ -111,6 +118,9 @@ const BackHelper = () => {
           Submit
         </Button>
       </Form>
+      <div>
+        <Button className="mt-3" onClick={handlePrueba}>Prueba getOnePhotoUser</Button>
+      </div>
     </div>
   );
 };
