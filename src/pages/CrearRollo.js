@@ -8,10 +8,9 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { createNewRollo } from "../api/apiRollos";
 import Toast from "react-bootstrap/Toast";
-import ToastContainer from 'react-bootstrap/ToastContainer';
+import ToastContainer from "react-bootstrap/ToastContainer";
 const inputFile = document.getElementById("file");
 const CrearRollo = () => {
-  const [position, setPosition] = useState('top-start');
   const [datos, setDatos] = React.useState({
     formato: "",
     marca: "",
@@ -22,7 +21,7 @@ const CrearRollo = () => {
     description: "",
     link: [],
   });
-  const [dataToast, setDataToast] = useState(true);
+  const [dataToast, setDataToast] = useState(false);
   const mostrarToast = () => setDataToast(!dataToast);
   const [foto, setFoto] = React.useState({
     file: File,
@@ -36,17 +35,15 @@ const CrearRollo = () => {
     Object.entries(datos).forEach(([key, value]) => {
       formData.append(key, value);
       //console.log(key,value);
-  })
-    
-    
+    });
+
     const resultado = await createNewRollo(formData);
     console.log(resultado);
     if (resultado.status === 200) {
       mostrarToast();
       setTimeout(() => {
-      // setDataToast(false)
-}, "2000");
-
+        setDataToast(false);
+      }, "2000");
     }
   };
   const abrirInputFile = () => {
@@ -76,7 +73,7 @@ const CrearRollo = () => {
               alt=""
               onClick={abrirInputFile}
             />
-            <Form.Group controlId="formFile" className="mb-3">
+            <Form.Group  className="mb-3">
               <Form.Control
                 name="file"
                 id="file"
@@ -142,7 +139,7 @@ const CrearRollo = () => {
                 <option>40</option>
               </Form.Select>
             </Form.Group>
-            <Form.Group className="mb-3" controlId="formBasicDescripcion">
+            <Form.Group className="mb-3" >
               <Form.Label>Descripcion</Form.Label>
               <Form.Control
                 name="descripcion"
@@ -151,21 +148,19 @@ const CrearRollo = () => {
                 placeholder="Ingresa la descripcion del rollo"
               />
             </Form.Group>
-            <ToastContainer style={{marginTop:"10%"}} position="top-start">
-            <Toast show={dataToast} onClose={setDataToast}>
-              <Toast.Header>
-                <img
-                  src="holder.js/20x20?text=%20"
-                  className="rounded me-2"
-                  alt=""
-                />
-                <strong className="me-auto">Succes</strong>
-                <small>hace un segundo</small>
-              </Toast.Header>
-              <Toast.Body>
-                Rollo Creado Correctamente
-              </Toast.Body>
-            </Toast>
+            <ToastContainer style={{ marginTop: "10%" }} position="top-start">
+              <Toast show={dataToast} onClose={setDataToast}>
+                <Toast.Header>
+                  <img
+                    src="holder.js/20x20?text=%20"
+                    className="rounded me-2"
+                    alt=""
+                  />
+                  <strong className="me-auto">Succes</strong>
+                  <small>hace un segundo</small>
+                </Toast.Header>
+                <Toast.Body>Rollo Creado Correctamente</Toast.Body>
+              </Toast>
             </ToastContainer>
             <Button onClick={imprimirDatos}>Agregar Rollo</Button>
           </Form>
