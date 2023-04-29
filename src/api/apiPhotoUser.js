@@ -21,10 +21,12 @@ export const createNewPhotoUser = async()=>{
 
 
 export const getOnePhotoUser = async(idPhotoUser)=>{
-    const service = `/${idPhotoUser}`;
+    //const service = `/${idPhotoUser}`;
+    const service = `/getOnePhotoUser`;
     const method = 'get';
+    const myData = {idPhotoUser};
 
-    return await doRequestAxios(service,entity,method);
+    return await doRequestAxios(service,entity,method,myData);
     
 }
 

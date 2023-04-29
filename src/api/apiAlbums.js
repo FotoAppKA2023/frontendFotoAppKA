@@ -51,33 +51,37 @@ export const postAlbum = async(album)=>{
 }
 
 export const getMyAlbumsByIdPhotoUser = async(idPhotoUser,searchParams)=>{
-    const service = `/myAlbums/${idPhotoUser}`;
+    const service = `/myAlbums`;
     const method = 'get';
+    const myData = {idPhotoUser,searchParams};
 
-    return await doRequestAxios(service,entity,method);
+    return await doRequestAxios(service,entity,method,myData);
     
 }
 
 export const getOneAlbum = async(idAlbum)=>{
-    const service = `/${idAlbum}`;
+    const service = `/getOneAlbum`;
     const method = 'get';
+    const myData = {idAlbum};
 
-    return await doRequestAxios(service,entity,method);
+    return await doRequestAxios(service,entity,method,myData);
     
 }
 
 export const updateAlbum = async(idAlbum)=>{
-    const service = `/${idAlbum}`;
+    const service = `/updateAlbum`;
     const method = 'put';
+    const myData = {idAlbum};
 
-    return await doRequestAxios(service,entity,method);
+    return await doRequestAxios(service,entity,method,myData);
     
 }
 
 export const deleteAlbum = async(idAlbum)=>{
-    const service = `/${idAlbum}`;
+    const service = `/deleteAlbum`;
     const method = 'delete';
+    const myData = {idAlbum};
 
-    return await doRequestAxios(service,entity,method);
+    return await doRequestAxios(service,entity,method,myData);
     
 }
