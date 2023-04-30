@@ -1,14 +1,13 @@
 import React, { useState } from "react";
-import ReactDOM from "react-dom/client";
 import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 import Container from "react-bootstrap/Container";
 import imagen from "../assets/imagen-placeholder.png";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { createNewRollo } from "../api/apiRollos";
-import Toast from "react-bootstrap/Toast";
-import ToastContainer from "react-bootstrap/ToastContainer";
+
 const inputFile = document.getElementById("file");
 const CrearRollo = () => {
   const [datos, setDatos] = React.useState({
@@ -21,54 +20,61 @@ const CrearRollo = () => {
     description: "",
     link: [],
   });
-
+  const [smShow, setSmShow] = useState(false);
   const [foto, setFoto] = React.useState({
     file: File,
   });
 
   const imprimirDatos = async () => {
+    console.log("file: ", foto.file);
     const formData = new FormData();
-    formData.append("imagenRollo", foto.file);
+    formData.append("imagen", foto.file);
     Object.entries(datos).forEach(([key, value]) => {
       formData.append(key, value);
-     
     });
 
     const resultado = await createNewRollo(formData);
-   
-    console.log(resultado)
+
     if (resultado.status === 200) {
+      setSmShow(true);
     }
   };
   const abrirInputFile = () => {
     inputFile.click();
   };
   const obtenerFile = (event) => {
-   
     setFoto({
       [event.target.name]: event.target.files[0],
     });
   };
   const obtenerValor = (event) => {
+    console.log(event.target.name, ": ", event.target.value);
     setDatos({
       ...datos,
       [event.target.name]: event.target.value,
     });
   };
 
-  const [show, setShow] = useState(false);
   return (
     <Container>
-      <Toast onClose={() => setShow(false)} show={show} delay={3000} autohide>
-        <Toast.Header>
-          <img src="holder.js/20x20?text=%20" className="rounded me-2" alt="" />
-          <strong className="me-auto">Bootstrap</strong>
-          <small>11 mins ago</small>
-        </Toast.Header>
-        <Toast.Body>Woohoo, you're reading this text in a Toast!</Toast.Body>
-      </Toast>
       <Row>
-        <Col></Col>
+        <Col>
+          <Modal
+            size="sm"
+            show={smShow}
+            onHide={() => setSmShow(false)}
+            aria-labelledby="example-modal-sizes-title-sm"
+          >
+            <Modal.Header closeButton style={{ backgroundColor: "#28A745" }}>
+              <Modal.Title id="example-modal-sizes-title-sm">
+                Succes
+              </Modal.Title>
+            </Modal.Header>
+            <Modal.Body style={{ backgroundColor: "#95D195" }}>
+              Rollo Creado Correctamente
+            </Modal.Body>
+          </Modal>
+        </Col>
         <Col>
           <div>
             <img
@@ -77,8 +83,9 @@ const CrearRollo = () => {
               alt=""
               onClick={abrirInputFile}
             />
-            <Form.Group  className="mb-3">
+            <Form.Group className="mb-3">
               <Form.Control
+                aria-required
                 name="file"
                 id="file"
                 onChange={obtenerFile}
@@ -146,7 +153,7 @@ const CrearRollo = () => {
             <Form.Group className="mb-3">
               <Form.Label>Descripcion</Form.Label>
               <Form.Control
-                name="descripcion"
+                name="description"
                 onChange={obtenerValor}
                 type="text"
                 placeholder="Ingresa la descripcion del rollo"
