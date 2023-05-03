@@ -4,6 +4,8 @@ import Error from '../pages/Error';
 import About from '../pages/About';
 import BackHelper from '../pages/BackHelper';
 import CrearRollo from '../pages/CrearRollo';
+import Login from '../pages/Login';
+import Register from '../pages/Register';
 
 export const router = createBrowserRouter([
 	{
@@ -22,5 +24,13 @@ export const router = createBrowserRouter([
 	{
 		path:'crear-rollo/',
 		element:<CrearRollo/>
+	},
+	{
+		path:'login/',
+		element:<Login/>
+	},
+	{
+		path:'register/',
+		element:<Register/>
 	}
 ]);
