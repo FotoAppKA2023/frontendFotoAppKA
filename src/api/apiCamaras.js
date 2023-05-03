@@ -21,10 +21,11 @@ export const postNewCamara = async()=>{
 }
 
 export const getOneCamara = async(idCamara)=>{
-    const service = `/${idCamara}`;
+    const service = `/getOneCamara`;
     const method = 'get';
+    const myData = {idCamara}
 
-    return await doRequestAxios(service,entity,method);
+    return await doRequestAxios(service,entity,method,myData);
     
 }
 
