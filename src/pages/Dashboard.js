@@ -1,6 +1,14 @@
 import CardAlbumMain from "../components/Home/CardAlbumMain";
 import CardAlbumAside from "../components/Home/CardAlbumASide";
+import { useEffect } from "react";
+import { getAllAlbums } from "../api/apiAlbums";
 export default function Dashboard() {
+  let resultado;
+  useEffect(() => {
+    resultado=getAllAlbums()
+    console.log(resultado)
+  });
+
   const albumModel = {
     imagenUrl:
       "https://1819.es/wp-content/uploads/2020/04/El-coleccionismo-de-fotograf%C3%ADas-antiguas.jpg",
@@ -20,7 +28,6 @@ export default function Dashboard() {
     <div
       style={{
         display: "flex",
-    
 
         width: "100%",
       }}
@@ -29,7 +36,7 @@ export default function Dashboard() {
         style={{
           width: "25%",
           height: "100vh",
-        
+
           display: "flex",
         }}
       >
@@ -58,7 +65,6 @@ export default function Dashboard() {
       </aside>
       <main
         style={{
-         
           width: "70%",
           display: "flex",
           gap: "5%",
