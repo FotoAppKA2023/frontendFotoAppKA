@@ -1,6 +1,6 @@
-const nodeEnv = 'PROD';
+const nodeEnv = 'PRD';
 
 
 
 
-export const backendURL = nodeEnv==='DEV' ? 'http://localhost:4000/api':'https://apiror.fotoappkodemia.de/api';
+export const backendURL = nodeEnv==='DEV' ? 'http://localhost:4000/api':'https://apiback.fotoappkodemia.de/api';

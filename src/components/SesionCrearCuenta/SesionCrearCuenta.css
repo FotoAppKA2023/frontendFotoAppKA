@@ -1,0 +1,86 @@
+html,
+body {
+  background-color: #3f3b38;
+}
+
+.login-page {
+  background-color: #3f3b38;
+}
+
+.login-page .container {
+  max-width: 1100px;
+}
+
+.filmoteca{
+  color: #ffffff;
+}
+
+h2{
+  color: #ffffff;
+}
+
+.formLogin {
+  height: 300px;
+  width: 300px;
+}
+
+.imgPhoto img {
+  position: relative;
+  height: 550px;
+  width: 600px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    background: rgba(217, 217, 217, 0.2) !important;
+border: 1px solid #DCD6CE;
+border-radius: 5px;
+background: rgba(217, 217, 217, 0.2) !important;
+}
+
+.google-link {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
+}
+
+.google-link:hover{
+  color: #FFD600ff;
+}
+
+.google-logo {
+  width: 20px;
+  margin-right: 10px;
+}
+
+.form-check-label {
+  color: #FFD600ff;
+}
+
+.form-check-label:hover{
+  cursor: pointer;
+
+}
+
+
+.form-label{
+  color: #ffffff;
+}
+
+.register-link{
+  color: #FFD600ff;
+}
+
+.register-link:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background-color: #FFD600 !important;
+  border-color: #FFD600 !important;
+  color: #000000 !important;
+}
