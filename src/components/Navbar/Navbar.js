@@ -2,13 +2,16 @@ import React, { useState } from 'react';
 import './Navbar.css';
 import { Navbar, Container, Nav, Button } from 'react-bootstrap';
 import ModalCrearPublicacion from '../ModalCrearPublicacion/ModalCrearPublicacion';
+import { useNavigate } from 'react-router';
 
 const AppNavbar = () => {
   const [loggedIn, setLoggedIn] = useState(false);
   const [showCrearPublicacionModal, setShowCrearPublicacionModal] = useState(false);
+  const navigate = useNavigate();
 
   const handleLogin = () => {
     setLoggedIn(true);
+    navigate('/login');
   };
 
   const handleCrearPublicacionClick = () => {

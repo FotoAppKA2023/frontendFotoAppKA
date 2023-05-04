@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 const nodeEnv = 'PRD';
+=======
+const nodeEnv = 'DEV';
+>>>>>>> ram
 
 
 
