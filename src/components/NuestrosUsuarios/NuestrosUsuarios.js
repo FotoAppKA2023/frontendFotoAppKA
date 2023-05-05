@@ -7,7 +7,7 @@ import avatar from '../../assets/imgNuestrosUsuarios/avatarUsuario.png';
 const NuestrosUsuarios = () => {
 	return (
 		<>
-			<section id="nuestrosUsuarios">
+			<section style={{position: 'relative'}} id="nuestrosUsuarios">
 				<h2 className="usuariosH2">
 					Amamos a nuestros usuarios y ellos nos aman a nosotros
 				</h2>
