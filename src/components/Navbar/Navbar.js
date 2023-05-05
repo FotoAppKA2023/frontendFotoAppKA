@@ -34,7 +34,7 @@ const AppNavbar = () => {
     <Nav className="ms-auto">
       <Nav.Link href="#rollos">Rollos</Nav.Link>
       
-      <Nav.Link href="crear-rollo/" onClick={handleCrearPublicacionClick}>
+      <Nav.Link href="#" onClick={handleCrearPublicacionClick}>
         Crear publicación
       </Nav.Link>
       <Nav.Link href="#perfil">Perfil</Nav.Link>
