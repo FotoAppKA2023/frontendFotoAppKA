@@ -1,0 +1,207 @@
+[33mcommit f308378f57baf74769c6ea288889415641310109[m[33m ([m[1;36mHEAD -> [m[1;32minciarsesion[m[33m)[m
+Author: WalterIruegas <walter.iruegas@outlook.com>
+Date:   Thu May 4 20:53:46 2023 -0500
+
+    modal crear publicacion
+
+[33mcommit 811bea993d5a6388e6babebe6afa9622fc0407e3[m
+Author: WalterIruegas <walter.iruegas@outlook.com>
+Date:   Thu May 4 20:49:14 2023 -0500
+
+    modalCrearPublicacion
+
+[33mcommit e2426f21bdc6da3739d19301bb5c4a6b1172feb6[m
+Author: WalterIruegas <walter.iruegas@outlook.com>
+Date:   Thu Apr 27 22:12:35 2023 -0500
+
+    agregar crear publicacion
+
+[33mcommit 7b2275735d220024de69a8a058bf8e12687c306c[m
+Author: WalterIruegas <walter.iruegas@outlook.com>
+Date:   Thu Apr 27 21:48:47 2023 -0500
+
+    Agregar carpeta SesionCrearCuenta
+
+[33mcommit 0db5f3be59653ba3c43bf16186ef535c5a6ead2f[m[33m ([m[1;32mdev[m[33m)[m
+Author: WalterIruegas <walter.iruegas@outlook.com>
+Date:   Thu Apr 20 21:06:56 2023 -0500
+
+    update ConoceMas & CovierteteExperto
+
+[33mcommit 1140284762284f4bcadc6f3479c047d6eb967208[m
+Author: ror2022 <fotoappkodemia@gmail.com>
+Date:   Thu Apr 20 12:26:11 2023 -0600
+
+    integrando cambios
+
+[33mcommit dbad4a711b100fa0ed2f9ae9f194b71fbeed23db[m
+Author: ror2022 <fotoappkodemia@gmail.com>
+Date:   Thu Apr 20 12:22:55 2023 -0600
+
+    integrando landingParts
+
+[33mcommit be03c5c0867ae88f7fea60ee1e011fa5dac09f1c[m
+Merge: 0415fa1 225f36e
+Author: ror2022 <fotoappkodemia@gmail.com>
+Date:   Thu Apr 20 12:18:55 2023 -0600
+
+    integrando NuestrosUsuarios
+
+[33mcommit 0415fa15f7943966cd1a345777af2849b62c7a7c[m
+Merge: c38ae28 0c74387
+Author: ror2022 <fotoappkodemia@gmail.com>
+Date:   Thu Apr 20 12:14:10 2023 -0600
+
+    integrando landingPart2
+
+[33mcommit c38ae282a0a5ffc0b38e36fe0032bb108527e04a[m
+Author: ror2022 <fotoappkodemia@gmail.com>
+Date:   Thu Apr 20 12:10:21 2023 -0600
+
+    integrando landingPart1
+
+[33mcommit 6fedbcb8d13976cb4a246c1360e4c2ba031eebff[m
+Merge: f6c3f75 1135e1a
+Author: ror2022 <fotoappkodemia@gmail.com>
+Date:   Thu Apr 20 12:09:54 2023 -0600
+
+    integrando landingPart1
+
+[33mcommit 225f36ed5a8868f83088f332963927117e5b9027[m
+Author: Fernando <fer_mdogtz2222@icloud.com>
+Date:   Thu Apr 20 01:16:17 2023 -0600
+
+    nuevo componente NuestrosUsuarios
+
+[33mcommit 0c74387feb11b9a3d2d17292909258ba31895632[m
+Author: WalterIruegas <walter.iruegas@outlook.com>
+Date:   Thu Apr 20 00:22:36 2023 -0500
+
+    new branch landingPart2 updatev3
+
+[33mcommit dd1a28d0d74525fbb39cdb1965c461a7bdc2e3d1[m
+Author: WalterIruegas <walter.iruegas@outlook.com>
+Date:   Wed Apr 19 23:49:46 2023 -0500
+
+    new branch landingPart2 updatev2
+
+[33mcommit 8d98c1dac12a7629b7f98c3d06766bb3a59420cc[m
+Author: WalterIruegas <walter.iruegas@outlook.com>
+Date:   Wed Apr 19 23:42:46 2023 -0500
+
+    new branch landingPart2
+
+[33mcommit 1135e1af0a352a274d941d47fa0a6b07e656ef82[m[33m ([m[1;31morigin/landingPart1[m[33m, [m[1;32mlandingPart1[m[33m)[m
+Author: WalterIruegas <walter.iruegas@outlook.com>
+Date:   Wed Apr 19 23:36:22 2023 -0500
+
+    update LandingPart1 v2
+
+[33mcommit d2048c4ce079fd372b25dff42006c2806cf16b05[m
+Author: WalterIruegas <walter.iruegas@outlook.com>
+Date:   Wed Apr 19 20:46:46 2023 -0500
+
+    part1 de landing page
+
+[33mcommit f6c3f75d60f65c35a5620bf3fde4b8e938d3f351[m
+Author: ror2022 <fotoappkodemia@gmail.com>
+Date:   Wed Apr 19 19:00:49 2023 -0600
+
+    agregando rollosFav con navbar
+
+[33mcommit 4d9b7cb636c1c5e4ae0c6ec8d902ae6f000be68b[m
+Merge: 1c14120 e351b07
+Author: ror2022 <fotoappkodemia@gmail.com>
+Date:   Wed Apr 19 18:46:11 2023 -0600
+
+    agregando rama rollosFav
+
+[33mcommit 1c14120ce4037a8da6fd8f9e1b6901b0326091a9[m
+Author: ror2022 <fotoappkodemia@gmail.com>
+Date:   Wed Apr 19 18:40:10 2023 -0600
+
+    agregando apiFrontend
+
+[33mcommit 48b71865d1267b453f289802b481bbfe2f9658b3[m
+Author: ror2022 <fotoappkodemia@gmail.com>
+Date:   Wed Apr 19 11:53:23 2023 -0600
+
+    agregando apiFrontend
+
+[33mcommit e351b07718ec242c2ac01c11d366dd3f2b4c02f4[m
+Author: Fernando <fer_mdogtz2222@icloud.com>
+Date:   Wed Apr 19 00:29:34 2023 -0600
+
+    Componente rollos populares
+
+[33mcommit 4f0ca23e4a7842e36652653df609a3783cf9774a[m
+Author: ror2022 <fotoappkodemia@gmail.com>
+Date:   Tue Apr 18 21:32:40 2023 -0600
+
+    creando apiFtontend
+
+[33mcommit 6dbc982e823881e18f21ce4ba277aa774edd9815[m[33m ([m[1;31morigin/navbar[m[33m, [m[1;32mnavbar[m[33m)[m
+Author: WalterIruegas <walter.iruegas@outlook.com>
+Date:   Tue Apr 18 20:48:59 2023 -0500
+
+    navbar update-v3
+
+[33mcommit aac81d23ab42b189c739058d1884fcaceeb8c555[m
+Author: WalterIruegas <walter.iruegas@outlook.com>
+Date:   Tue Apr 18 20:31:15 2023 -0500
+
+    navbar update-v2
+
+[33mcommit 7b686a684b344d535b6f461d31847c808f0693a9[m
+Author: WalterIruegas <walter.iruegas@outlook.com>
+Date:   Tue Apr 18 20:28:42 2023 -0500
+
+    navbar move navcontainer right
+
+[33mcommit 0effd6fce772349608c0fb6baa8230bf16fe90e7[m
+Author: WalterIruegas <walter.iruegas@outlook.com>
+Date:   Tue Apr 18 20:10:07 2023 -0500
+
+    navbar update button sesion
+
+[33mcommit d2467eaf08790dc42fa41348ee78966ffec48731[m
+Author: WalterIruegas <walter.iruegas@outlook.com>
+Date:   Tue Apr 18 19:49:19 2023 -0500
+
+    new branck navbar
+
+[33mcommit d703074074bc05da9e5a99fb00bdc0aaffe360cd[m[33m ([m[1;32mmain[m[33m)[m
+Author: ror2022 <fotoappkodemia@gmail.com>
+Date:   Sun Apr 16 18:29:05 2023 -0600
+
+    agregando saludo con backend
+
+[33mcommit 32780873315e4b8d57804548984afbdc9fb809fa[m
+Author: ror2022 <fotoappkodemia@gmail.com>
+Date:   Sun Apr 16 17:48:49 2023 -0600
+
+    agregando primerlogo
+
+[33mcommit 885ec00c5d4f18d0606a6f51bbfb9ea91baf9e73[m
+Author: ror2022 <fotoappkodemia@gmail.com>
+Date:   Sun Apr 16 17:09:59 2023 -0600
+
+    agregando context y routes
+
+[33mcommit 69979d31a124cde5d2c33580f77ece18536184e7[m
+Author: ror2022 <fotoappkodemia@gmail.com>
+Date:   Fri Apr 14 18:44:10 2023 -0600
+
+    primera version dev
+
+[33mcommit b133c50655b7e7ea3ff15054364837a5c3499c29[m
+Author: ror2022 <fotoappkodemia@gmail.com>
+Date:   Fri Apr 14 18:17:31 2023 -0600
+
+    first version
+
+[33mcommit 18722b05f5ad24ab711112a07efc478eb577d6f0[m
+Author: FotoAppKA2023 <130713596+FotoAppKA2023@users.noreply.github.com>
+Date:   Thu Apr 13 17:55:30 2023 -0600
+
+    Initial commit

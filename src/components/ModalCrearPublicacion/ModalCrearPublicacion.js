@@ -24,6 +24,7 @@ const ModalCrearPublicacion = ({ show, handleClose }) => {
       setDescripcion('');
       setImagenes([]);
       setOpcionSeleccionada('');
+      
     }
   };
  
@@ -122,7 +123,7 @@ const ModalCrearPublicacion = ({ show, handleClose }) => {
   <Toast.Body>Su publicación ha sido creada exitosamente</Toast.Body>
 </Toast>
 
-<Toast show={showErrorToast} onClose={() => setShowErrorToast(false)} autohide delay={3000}>
+<Toast show={showErrorToast} onClose={(handleClose) => setShowErrorToast(false)} autohide delay={3000}>
   <Toast.Header>
     <strong className="mr-auto">Error en la publicación</strong>
   </Toast.Header>

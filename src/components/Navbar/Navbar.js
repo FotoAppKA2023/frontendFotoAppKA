@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './Navbar.css';
 import { Navbar, Container, Nav, Button } from 'react-bootstrap';
-import ModalCrearPublicacion from '../ModalCrearPublicacion/ModalCrearPublicacion';
+import ModalCrearPublicacion from '../ModalCrearPublicacion/ModalCrearPublicacion.js';
 
 const AppNavbar = () => {
   const [loggedIn, setLoggedIn] = useState(false);
