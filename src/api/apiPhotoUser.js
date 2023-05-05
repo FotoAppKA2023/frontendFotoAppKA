@@ -1,3 +1,4 @@
+
 import { doRequestAxios } from "./apiAxios";
 
 
@@ -44,4 +45,11 @@ export const deletePhotoUser = async(idPhotoUser)=>{
 
     return await doRequestAxios(service,entity,method);
     
+}
+
+export const loginPhotoUser = async(dataLogin)=>{
+    const service = `/login`;
+    const method = 'post';
+
+    return await doRequestAxios(service,entity,method,dataLogin);
 }
