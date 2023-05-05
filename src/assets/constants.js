@@ -1,1 +1,6 @@
-export const backendURL = 'https://apiror.fotoappkodemia.de/api';
+const nodeEnv = 'PRD';
+
+
+
+
+export const backendURL = nodeEnv==='DEV' ? 'http://localhost:4000/api':'https://apiror.fotoappkodemia.de/api';
