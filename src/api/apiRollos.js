@@ -11,11 +11,11 @@ export const getAllRollos = async()=>{
     
 }
 
-export const createNewRollo = async()=>{
+export const createNewRollo = async(formData)=>{
     const service = '/';
-    const method = 'post';
+    const method = 'postForm';
 
-    return await doRequestAxios(service,entity,method);
+    return await doRequestAxios(service,entity,method,formData);
     
 }
 

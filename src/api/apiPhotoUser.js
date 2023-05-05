@@ -1,3 +1,4 @@
+
 import { doRequestAxios } from "./apiAxios";
 
 
@@ -21,10 +22,12 @@ export const createNewPhotoUser = async()=>{
 
 
 export const getOnePhotoUser = async(idPhotoUser)=>{
-    const service = `/${idPhotoUser}`;
+    //const service = `/${idPhotoUser}`;
+    const service = `/getOnePhotoUser`;
     const method = 'get';
+    const myData = {idPhotoUser};
 
-    return await doRequestAxios(service,entity,method);
+    return await doRequestAxios(service,entity,method,myData);
     
 }
 
@@ -42,4 +45,11 @@ export const deletePhotoUser = async(idPhotoUser)=>{
 
     return await doRequestAxios(service,entity,method);
     
+}
+
+export const loginPhotoUser = async(dataLogin)=>{
+    const service = `/login`;
+    const method = 'post';
+
+    return await doRequestAxios(service,entity,method,dataLogin);
 }

@@ -6,6 +6,7 @@ import ConvierteteExperto from '../components/ConvierteteExperto/ConvierteteExpe
 import ConoceMas from '../components/ConoceMas/ConoceMas';
 import NuestrosUsuarios from '../components/NuestrosUsuarios/NuestrosUsuarios.js';
 import ExpertoFoto from '../components/ExpertoFoto/ExpertoFoto.js';
+import Footer from '../components/Footer/Footer.js';
 
 const Home = () => {
 	return (
@@ -16,6 +17,7 @@ const Home = () => {
 			<NuestrosUsuarios />
 			<RollosPopulares />
 			<ExpertoFoto />
+			<Footer/>
 		</div>
 	);
 };

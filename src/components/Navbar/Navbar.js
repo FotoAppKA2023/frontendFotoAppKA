@@ -1,14 +1,33 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Navbar.css';
 import { Navbar, Container, Nav, Button } from 'react-bootstrap';
+<<<<<<< HEAD
 import ModalCrearPublicacion from '../ModalCrearPublicacion/ModalCrearPublicacion.js';
+=======
+import ModalCrearPublicacion from '../ModalCrearPublicacion/ModalCrearPublicacion';
+import { useNavigate } from 'react-router';
+import usePhoto from '../../hooks/usePhoto';
+>>>>>>> d59a0e2e5cd0966c5d0d71e88581527793f14c0f
 
 const AppNavbar = () => {
   const [loggedIn, setLoggedIn] = useState(false);
   const [showCrearPublicacionModal, setShowCrearPublicacionModal] = useState(false);
+  const navigate = useNavigate();
+  const [dataPhotoUser]=usePhoto();
+
+  useEffect(() => {
+    
+    if(dataPhotoUser.isLogged){
+      console.log('Usuario Logeado con exito:..');
+      setLoggedIn(true);
+    } 
+    
+  }, [dataPhotoUser.isLogged])
+  
 
   const handleLogin = () => {
-    setLoggedIn(true);
+    //setLoggedIn(true);
+    navigate('/login');
   };
 
   const handleCrearPublicacionClick = () => {
@@ -18,7 +37,8 @@ const AppNavbar = () => {
   const navLinks = (
     <Nav className="ms-auto">
       <Nav.Link href="#rollos">Rollos</Nav.Link>
-      <Nav.Link href="#publicacion" onClick={handleCrearPublicacionClick}>
+      
+      <Nav.Link href="crear-rollo/" onClick={handleCrearPublicacionClick}>
         Crear publicación
       </Nav.Link>
       <Nav.Link href="#perfil">Perfil</Nav.Link>
