@@ -1,16 +1,28 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Navbar.css';
 import { Navbar, Container, Nav, Button } from 'react-bootstrap';
 import ModalCrearPublicacion from '../ModalCrearPublicacion/ModalCrearPublicacion';
 import { useNavigate } from 'react-router';
+import usePhoto from '../../hooks/usePhoto';
 
 const AppNavbar = () => {
   const [loggedIn, setLoggedIn] = useState(false);
   const [showCrearPublicacionModal, setShowCrearPublicacionModal] = useState(false);
   const navigate = useNavigate();
+  const [dataPhotoUser]=usePhoto();
+
+  useEffect(() => {
+    
+    if(dataPhotoUser.isLogged){
+      console.log('Usuario Logeado con exito:..');
+      setLoggedIn(true);
+    } 
+    
+  }, [dataPhotoUser.isLogged])
+  
 
   const handleLogin = () => {
-    setLoggedIn(true);
+    //setLoggedIn(true);
     navigate('/login');
   };
 
