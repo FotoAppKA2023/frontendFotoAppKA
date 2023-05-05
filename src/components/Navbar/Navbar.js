@@ -5,6 +5,7 @@ import ModalCrearPublicacion from '../ModalCrearPublicacion/ModalCrearPublicacio
 import { useNavigate } from 'react-router';
 import usePhoto from '../../hooks/usePhoto';
 
+
 const AppNavbar = () => {
   const [loggedIn, setLoggedIn] = useState(false);
   const [showCrearPublicacionModal, setShowCrearPublicacionModal] = useState(false);
