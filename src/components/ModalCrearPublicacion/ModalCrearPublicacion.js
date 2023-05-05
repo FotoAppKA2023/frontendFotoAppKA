@@ -4,6 +4,9 @@ import { useDropzone } from 'react-dropzone';
 import { BsCamera, BsPrinter, BsPlusCircleFill } from 'react-icons/bs';
 import { MdOutlineCameraRoll } from 'react-icons/md';
 
+/**
+ * This is a React component that handles state changes for a modal used to create a new publication.
+ */
 const ModalCrearPublicacion = ({ show, handleClose }) => {
   const [descripcion, setDescripcion] = useState('');
   const [imagenes, setImagenes] = useState([]);
@@ -15,6 +18,15 @@ const ModalCrearPublicacion = ({ show, handleClose }) => {
     setDescripcion(e.target.value);
   };
 
+  /**
+   * This function handles form submission and checks if certain fields are filled out before resetting
+   * them.
+   * @param event - The event parameter is an object that represents the event that triggered the
+   * function. In this case, it is the form submission event. The event object contains information
+   * about the event, such as the target element, the type of event, and any data associated with the
+   * event.
+   */
+  
   const handleSubmit = (event) => {
     event.preventDefault();
     if (!descripcion || imagenes.length === 0 || !opcionSeleccionada) {
@@ -27,11 +39,21 @@ const ModalCrearPublicacion = ({ show, handleClose }) => {
       
     }
   };
+ /**
+  * This function adds accepted files to an array of images.
+  * @param acceptedFiles - acceptedFiles is an array of files that have been dropped or selected by the
+  * user. In this code snippet, it is being spread into the existing array of images (imagenes) using
+  * the spread operator (...) and then set as the new state using the setImagenes function.
+  */
  
   const handleDrop = (acceptedFiles) => {
     setImagenes([...imagenes, ...acceptedFiles]);
   };
 
+  /* `const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop: handleDrop });` is
+  using the `useDropzone` hook from the `react-dropzone` library to create a dropzone area for the
+  user to upload images. It returns an object with three properties: `getRootProps`,
+  `getInputProps`, and `isDragActive`. */
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop: handleDrop });
 
     return (
@@ -90,19 +112,26 @@ const ModalCrearPublicacion = ({ show, handleClose }) => {
     </div>
     {opcionSeleccionada && (
   <Form.Group controlId="formOpciones">
-    <Form.Label>Seleccione una opción:</Form.Label>
-    <Form.Control as="select" value={opcionSeleccionada} onChange={(e) => setOpcionSeleccionada(e.target.value)}>
-      <option value="">--Seleccione una opción--</option>
-      {[
-        { value: "Camara", options: ["Camara 1", "Camara 2", "Camara 3"] },
-        { value: "Print", options: ["Print 1", "Print 2", "Print 3"] },
-        { value: "Rollo", options: ["Rollo 1", "Rollo 2", "Rollo 3"] }
-      ].find(opcion => opcion.value === opcionSeleccionada)?.options?.map((option, index) => (
-        <option key={index} value={option}>{option}</option>
-      ))}
-    </Form.Control>
-    <p>Seleccionaste: {opcionSeleccionada}</p>
-  </Form.Group>
+  <Form.Label>Seleccione una opción:</Form.Label>
+  <Form.Select size="lg" value={opcionSeleccionada} onChange={(e) => setOpcionSeleccionada(e.target.value)}>
+    <option value="">--Seleccione una opción--</option>
+    <optgroup label="Cámara">
+      <option value="Camara 1">Camara 1</option>
+      <option value="Camara 2">Camara 2</option>
+      <option value="Camara 3">Camara 3</option>
+    </optgroup>
+    <optgroup label="Print">
+      <option value="Print 1">Print 1</option>
+      <option value="Print 2">Print 2</option>
+      <option value="Print 3">Print 3</option>
+    </optgroup>
+    <optgroup label="Rollo">
+      <option value="Rollo 1">Rollo 1</option>
+      <option value="Rollo 2">Rollo 2</option>
+      <option value="Rollo 3">Rollo 3</option>
+    </optgroup>
+  </Form.Select>
+</Form.Group>
 )}
   </Card.Body>
 </Card>
@@ -123,7 +152,7 @@ const ModalCrearPublicacion = ({ show, handleClose }) => {
   <Toast.Body>Su publicación ha sido creada exitosamente</Toast.Body>
 </Toast>
 
-<Toast show={showErrorToast} onClose={(handleClose) => setShowErrorToast(false)} autohide delay={3000}>
+<Toast show={showErrorToast} onClose={() => setShowErrorToast(false)} autohide delay={3000}>
   <Toast.Header>
     <strong className="mr-auto">Error en la publicación</strong>
   </Toast.Header>
