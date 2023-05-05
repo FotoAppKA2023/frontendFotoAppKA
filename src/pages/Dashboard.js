@@ -1,17 +1,26 @@
 import CardAlbumMain from "../components/Home/CardAlbumMain";
 import CardAlbumAside from "../components/Home/CardAlbumASide";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { getAllAlbums } from "../api/apiAlbums";
-export default function Dashboard() {
-  let resultado;
-  useEffect(() => {
-    resultado=getAllAlbums()
-    console.log(resultado)
-  });
 
+export default function Dashboard() {
+  const [albumList, setAlbumList] = useState([]);
+  let cardsAside = [];
+  useEffect(() => {
+    ObtenerAlbums();
+  }, []);
+  const ObtenerAlbums = async () => {
+    try {
+      const resultado = await getAllAlbums();
+      if (resultado.data) {
+        //setAlbumList(resultado?.data?.result);
+        setAlbumList(resultado?.data?.result);
+        console.log("album Lista: ",albumList);
+      }
+    } catch (err) {}
+  };
   const albumModel = {
-    imagenUrl:
-      "https://1819.es/wp-content/uploads/2020/04/El-coleccionismo-de-fotograf%C3%ADas-antiguas.jpg",
+    imagenUrl: "resultado.data.result[0].urlImages[0]",
     idRollo: "2",
     idScanner: "3",
     idCamara: "4",
@@ -51,16 +60,11 @@ export default function Dashboard() {
             justifyContent: "space-between",
           }}
         >
-          <h2>Albumes favoritos</h2>
-          <CardAlbumAside datos={albumModel} />
-          <CardAlbumAside datos={albumModel} />
-          <CardAlbumAside datos={albumModel} />
-          <CardAlbumAside datos={albumModel} />
-          <h2>Rollos Favoritos</h2>
-          <CardAlbumAside datos={rolloModel} />
-          <CardAlbumAside datos={rolloModel} />
-          <CardAlbumAside datos={rolloModel} />
-          <CardAlbumAside datos={rolloModel} />
+          <h2 style={{ color: "black" }}>Albumes favoritos</h2>
+          {albumList.map((card) => (
+            <CardAlbumAside datos={card} />
+          ))}
+          <h2 style={{ color: "black" }}>Rollos Favoritos</h2>
         </div>
       </aside>
       <main
@@ -71,18 +75,9 @@ export default function Dashboard() {
           flexWrap: "wrap",
         }}
       >
-        <CardAlbumMain datos={albumModel} />
-        <CardAlbumMain datos={albumModel} />
-        <CardAlbumMain datos={albumModel} />
-        <CardAlbumMain datos={albumModel} />
-        <CardAlbumMain datos={albumModel} />
-        <CardAlbumMain datos={albumModel} />
-        <CardAlbumMain datos={albumModel} />
-        <CardAlbumMain datos={albumModel} />
-        <CardAlbumMain datos={albumModel} />
-        <CardAlbumMain datos={albumModel} />
-        <CardAlbumMain datos={albumModel} />
-        <CardAlbumMain datos={albumModel} />
+          {albumList.map((card) => (
+            <CardAlbumMain  datos={card} />
+          ))}
       </main>
     </div>
   );
