@@ -1,40 +1,41 @@
 import React, { useState } from 'react';
-import { Modal, Button, Form, Card } from 'react-bootstrap';
+import { Modal, Button, Form, Card, Toast } from 'react-bootstrap'; // Agregamos Toast a los imports
 import { useDropzone } from 'react-dropzone';
 import { BsCamera, BsPrinter, BsPlusCircleFill } from 'react-icons/bs';
 import { MdOutlineCameraRoll } from 'react-icons/md';
-
 
 const ModalCrearPublicacion = ({ show, handleClose }) => {
   const [descripcion, setDescripcion] = useState('');
   const [imagenes, setImagenes] = useState([]);
   const [opcionSeleccionada, setOpcionSeleccionada] = useState('');
-  
+  const [showSuccessToast, setShowSuccessToast] = useState(false);
+  const [showErrorToast, setShowErrorToast] = useState(false);
+
   const handleDescripcionChange = (e) => {
     setDescripcion(e.target.value);
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Aquí podrías enviar los datos de la publicación al servidor para crearla, incluyendo las imágenes seleccionadas
-    handleClose();
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if (!descripcion || imagenes.length === 0 || !opcionSeleccionada) {
+      setShowErrorToast(true);
+    } else {
+      setShowSuccessToast(true);
+      setDescripcion('');
+      setImagenes([]);
+      setOpcionSeleccionada('');
+    }
   };
-
+ 
   const handleDrop = (acceptedFiles) => {
     setImagenes([...imagenes, ...acceptedFiles]);
   };
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop: handleDrop });
 
-  const [showModal, setShowModal] = useState(false);
-
-  const handleModalClose = () => setShowModal(false);
-  const handleModalOpen = (e) => {
-    setShowModal(true);
-  }
-
     return (
-        <Modal show={show} onHide={handleClose}>
+      <Modal show={show} onHide={handleClose}>
+
         <Modal.Header closeButton>
             <Modal.Title>Crear Publicación</Modal.Title>
         </Modal.Header>
@@ -67,82 +68,72 @@ const ModalCrearPublicacion = ({ show, handleClose }) => {
                 </div>
             )}
                 <Card style={{ marginTop: '1rem' }}>
-                <Card.Body>
+  <Card.Body>
     <Card.Title>Agregar a tu publicación:</Card.Title>
     <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-      <BsCamera size={30} onClick={() => {
-        setOpcionSeleccionada('Camara');
-        handleModalOpen();
-      }} />
-      <BsPrinter size={30} onClick={() => {
-        setOpcionSeleccionada('Print');
-        handleModalOpen();
-      }} />
-      <MdOutlineCameraRoll size={30} onClick={() => {
-        setOpcionSeleccionada('Rollo');
-        handleModalOpen();
-      }} />
+
+    <BsCamera
+        size={30}
+        onClick={() => setOpcionSeleccionada('Camara')}
+        style={{ color: opcionSeleccionada === 'Camara' ? 'blue' : 'black' }}
+      />     
+       <BsPrinter size={30} 
+       onClick={() => setOpcionSeleccionada('Print')}
+       style={{ color: opcionSeleccionada === 'Print' ? 'blue' : 'black' }}
+        />
+      <MdOutlineCameraRoll 
+      size={30}
+      onClick={() => setOpcionSeleccionada('Rollo')}
+      style={{ color: opcionSeleccionada === 'Rollo' ? 'blue' : 'black' }}
+        />
     </div>
+    {opcionSeleccionada && (
+  <Form.Group controlId="formOpciones">
+    <Form.Label>Seleccione una opción:</Form.Label>
+    <Form.Control as="select" value={opcionSeleccionada} onChange={(e) => setOpcionSeleccionada(e.target.value)}>
+      <option value="">--Seleccione una opción--</option>
+      {[
+        { value: "Camara", options: ["Camara 1", "Camara 2", "Camara 3"] },
+        { value: "Print", options: ["Print 1", "Print 2", "Print 3"] },
+        { value: "Rollo", options: ["Rollo 1", "Rollo 2", "Rollo 3"] }
+      ].find(opcion => opcion.value === opcionSeleccionada)?.options?.map((option, index) => (
+        <option key={index} value={option}>{option}</option>
+      ))}
+    </Form.Control>
+    <p>Seleccionaste: {opcionSeleccionada}</p>
+  </Form.Group>
+)}
   </Card.Body>
+</Card>
 
-        <Modal show={showModal} onHide={handleModalClose}>
-  <Modal.Header closeButton>
-    <Modal.Title>Opcion de {opcionSeleccionada}</Modal.Title>
-  </Modal.Header>
-  <Modal.Body>
-    <Form.Group controlId="formOpciones">
-      <Form.Label>Seleccione una opción:</Form.Label>
-      <Form.Control as="select" value={opcionSeleccionada} onChange={(e) => setOpcionSeleccionada(e.target.value)}>
-        <option value="">--Seleccione una opción--</option>
-        {opcionSeleccionada === 'Camara' && (
-          <>
-            <option value="Camara 1">Camara 1</option>
-            <option value="Camara 2">Camara 2</option>
-            <option value="Camara 3">Camara 3</option>
-          </>
-        )}
-        {opcionSeleccionada === 'Print' && (
-          <>
-            <option value="Print 1">Print 1</option>
-            <option value="Print 2">Print 2</option>
-            <option value="Print 3">Print 3</option>
-          </>
-        )}
-        {opcionSeleccionada === 'Rollo' && (
-          <>
-            <option value="Rollo 1">Rollo 1</option>
-            <option value="Rollo 2">Rollo 2</option>
-            <option value="Rollo 3">Rollo 3</option>
-          </>
-        )}
-      </Form.Control>
-    </Form.Group>
-  </Modal.Body>
-  <Modal.Footer>
-    <Button variant="secondary" onClick={handleModalClose}>
-      Cerrar
-    </Button>
-    <Button variant="primary" onClick={handleModalClose}>
-      Guardar cambios
-    </Button>
-  </Modal.Footer>
-</Modal>
-
-            </Card>
             </Form>
         </Modal.Body>
-        <Modal.Footer>
-            <Button variant="secondary" onClick={handleClose}>
-            Cancelar
-            </Button>
-            <Button variant="primary" onClick={handleSubmit} disabled={descripcion === '' || imagenes.length === 0}>
-            Crear Publicación
-            </Button>
-        </Modal.Footer>
-        </Modal>
+    <Modal.Footer>
+    <Button variant="secondary" onClick={handleClose}>
+        Cancelar
+    </Button>
+    <Button variant="primary" onClick={handleSubmit}>
+    Crear Publicación
+</Button>
+<Toast show={showSuccessToast} autohide delay={3000} onClose={() => setShowSuccessToast(false)}>
+  <Toast.Header>
+    <strong className="mr-auto">Publicación creada</strong>
+  </Toast.Header>
+  <Toast.Body>Su publicación ha sido creada exitosamente</Toast.Body>
+</Toast>
+
+<Toast show={showErrorToast} onClose={() => setShowErrorToast(false)} autohide delay={3000}>
+  <Toast.Header>
+    <strong className="mr-auto">Error en la publicación</strong>
+  </Toast.Header>
+  <Toast.Body>Debe llenar todos los campos antes de crear una publicación</Toast.Body>
+</Toast>
+
+</Modal.Footer>
+</Modal>
 
         
     );
     };
-
+  
     export default ModalCrearPublicacion;
