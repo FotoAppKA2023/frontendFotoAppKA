@@ -57,7 +57,7 @@ const AppNavbar = () => {
           {loggedIn ? navLinks : loginButton}
         </Container>
       </Navbar>
-      <ModalCrearPublicacion show={showCrearPublicacionModal} onHide={() => setShowCrearPublicacionModal(false)} />
+      <ModalCrearPublicacion show={showCrearPublicacionModal} handleClose={() => setShowCrearPublicacionModal(false)} />
     </>
   );
 };

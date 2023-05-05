@@ -42,17 +42,8 @@ const ModalCrearPublicacion = ({ show, handleClose }) => {
         </Modal.Header>
         <Modal.Body>
             <Form onSubmit={handleSubmit}>
-            <Form.Group controlId="formDescripcion">
-                <Form.Label>Escribir descripción de la publicación</Form.Label>
-                <Form.Control
-                as="textarea"
-                rows={3}
-                placeholder="Ingrese la descripción de su publicación aquí"
-                value={descripcion}
-                onChange={handleDescripcionChange}
-                />
-            </Form.Group>
-            <div {...getRootProps()}>
+            
+            <div {...getRootProps()} className='border p-2 rounded'>
                 <input {...getInputProps()} />
                 {isDragActive ? (
                 <p>Suelta la imagen aquí ...</p>
@@ -64,7 +55,7 @@ const ModalCrearPublicacion = ({ show, handleClose }) => {
                 <div>
                 <h4>Imágenes seleccionadas:</h4>
                 {imagenes.map((imagen) => (
-                    <img src={URL.createObjectURL(imagen)} alt={imagen.name} key={imagen.name} />
+                    <img width={'20%'} className='mx-2' src={URL.createObjectURL(imagen)} alt={imagen.name} key={imagen.name} />
                 ))}
                 </div>
             )}
@@ -106,6 +97,18 @@ const ModalCrearPublicacion = ({ show, handleClose }) => {
 )}
   </Card.Body>
 </Card>
+<Form.Group controlId="formDescripcion">
+                <Form.Label>Escribir descripción de la publicación</Form.Label>
+                <Form.Control
+                style={{resize:'none'}}
+                as="textarea"
+                rows={3}
+                placeholder="Ingrese la descripción de su publicación aquí"
+                value={descripcion}
+                onChange={handleDescripcionChange}
+                
+                />
+            </Form.Group>
 
             </Form>
         </Modal.Body>
