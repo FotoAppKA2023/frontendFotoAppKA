@@ -2,7 +2,9 @@ import CardAlbumMain from "../components/Home/CardAlbumMain";
 import CardAlbumAside from "../components/Home/CardAlbumASide";
 import { useEffect, useState } from "react";
 import { getAllAlbums } from "../api/apiAlbums";
-import { getAllPhotoUser } from "../api/apiPhotoUser";
+import { getAllPhotoUser } from "../api/apiPhotoUser";import Navbar from '../components/Navbar/Navbar';
+import Footer from '../components/Footer/Footer'
+
 export default function Dashboard() {
   const [albumList, setAlbumList] = useState([]);
   const [usuariosList, setUsuariosList]=useState([])
@@ -37,7 +39,9 @@ export default function Dashboard() {
 
 
   return (
-    <div
+    <>
+    <Navbar/>
+<div
       style={{
         display: "flex",
 
@@ -83,5 +87,8 @@ export default function Dashboard() {
           ))}
       </main>
     </div>
+    <Footer/>
+    </>
+    
   );
 }

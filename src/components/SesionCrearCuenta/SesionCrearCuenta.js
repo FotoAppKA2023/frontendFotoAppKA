@@ -56,9 +56,10 @@ const Login = () => {
         ...dataPhotoUser,
         nombre: retrivedDataPhotoUser.nombre,
         email: retrivedDataPhotoUser.email,
+        id: retrivedDataPhotoUser._id,
         isLogged: true,
       });
-      navigate('/');
+      navigate('/dashboard');
     }
   };
 

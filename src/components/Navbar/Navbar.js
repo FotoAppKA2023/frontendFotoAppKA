@@ -5,6 +5,7 @@ import ModalCrearPublicacion from '../ModalCrearPublicacion/ModalCrearPublicacio
 import { useNavigate } from 'react-router';
 import usePhoto from '../../hooks/usePhoto';
 
+
 const AppNavbar = () => {
   const [loggedIn, setLoggedIn] = useState(false);
   const [showCrearPublicacionModal, setShowCrearPublicacionModal] = useState(false);
@@ -34,7 +35,7 @@ const AppNavbar = () => {
     <Nav className="ms-auto">
       <Nav.Link href="#rollos">Rollos</Nav.Link>
       
-      <Nav.Link href="crear-rollo/" onClick={handleCrearPublicacionClick}>
+      <Nav.Link href="#" onClick={handleCrearPublicacionClick}>
         Crear publicación
       </Nav.Link>
       <Nav.Link href="#perfil">Perfil</Nav.Link>
@@ -56,7 +57,7 @@ const AppNavbar = () => {
           {loggedIn ? navLinks : loginButton}
         </Container>
       </Navbar>
-      <ModalCrearPublicacion show={showCrearPublicacionModal} onHide={() => setShowCrearPublicacionModal(false)} />
+      <ModalCrearPublicacion show={showCrearPublicacionModal} handleClose={() => setShowCrearPublicacionModal(false)} />
     </>
   );
 };

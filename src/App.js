@@ -10,6 +10,7 @@ const initDataPhotoUser = {
   nombre: '',
   apellido:'',
   email:'',
+  id:'',
   isLogged: false
 }
 
@@ -17,6 +18,7 @@ const initDataAdminUser = {
   nombre: '',
   apellido:'',
   email:'',
+  id:'',
   isLogged: false
 }
 
