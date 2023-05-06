@@ -6,6 +6,7 @@ import BackHelper from '../pages/BackHelper';
 import CrearRollo from '../pages/CrearRollo';
 import Login from '../pages/Login';
 import Register from '../pages/Register';
+import Dashboard from '../pages/Dashboard';
 
 export const router = createBrowserRouter([
 	{
@@ -32,5 +33,9 @@ export const router = createBrowserRouter([
 	{
 		path:'register/',
 		element:<Register/>
+	},
+	{
+		path:'dashboard/',
+		element:<Dashboard/>
 	}
 ]);
