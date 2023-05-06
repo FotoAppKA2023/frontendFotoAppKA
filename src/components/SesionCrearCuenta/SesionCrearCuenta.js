@@ -59,7 +59,7 @@ const Login = () => {
         id: retrivedDataPhotoUser._id,
         isLogged: true,
       });
-      navigate('/');
+      navigate('/dashboard');
     }
   };
 
