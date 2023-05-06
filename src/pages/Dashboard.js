@@ -2,36 +2,39 @@ import CardAlbumMain from "../components/Home/CardAlbumMain";
 import CardAlbumAside from "../components/Home/CardAlbumASide";
 import { useEffect, useState } from "react";
 import { getAllAlbums } from "../api/apiAlbums";
-
+import { getAllPhotoUser } from "../api/apiPhotoUser";
 export default function Dashboard() {
   const [albumList, setAlbumList] = useState([]);
-  let cardsAside = [];
+  const [usuariosList, setUsuariosList]=useState([])
   useEffect(() => {
+    obtenerUsuarios();
     ObtenerAlbums();
+
   }, []);
+
+  const obtenerUsuarios=async()=>{
+    const resultado=await getAllPhotoUser()
+    try{
+      if(resultado.data){
+        setUsuariosList(resultado?.data?.result)
+        console.log("lista de usuarios: ", usuariosList)
+      }
+    }catch{
+
+    }
+  }
   const ObtenerAlbums = async () => {
     try {
       const resultado = await getAllAlbums();
       if (resultado.data) {
-        //setAlbumList(resultado?.data?.result);
         setAlbumList(resultado?.data?.result);
         console.log("album Lista: ",albumList);
       }
-    } catch (err) {}
+    } catch (err) {
+
+    }
   };
-  const albumModel = {
-    imagenUrl: "resultado.data.result[0].urlImages[0]",
-    idRollo: "2",
-    idScanner: "3",
-    idCamara: "4",
-  };
-  const rolloModel = {
-    imagenUrl:
-      "https://www.fotojapon.com/media/images/products/641/16787441857wHYk-350.jpg",
-    idRollo: "2",
-    idScanner: "3",
-    idCamara: "4",
-  };
+
 
   return (
     <div
