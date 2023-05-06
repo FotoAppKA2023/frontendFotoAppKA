@@ -1,7 +1,8 @@
 
+
 import { doRequestAxios } from "./apiAxios";
 
-const entity= '/photoUser';
+const entity= '/adminUser';
 
 export const getVerifyAlbums = async()=>{
     const service = '/verificarAlbumes';
@@ -9,4 +10,11 @@ export const getVerifyAlbums = async()=>{
 
     return await doRequestAxios(service,entity,method);
     
+}
+
+export const loginAdminUser = async(dataLogin)=>{
+    const service = '/loginAdminUser';
+    const method = 'post';
+
+    return await doRequestAxios(service,entity,method,dataLogin);
 }

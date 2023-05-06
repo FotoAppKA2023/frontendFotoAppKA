@@ -9,7 +9,7 @@ export default function CardAlbumMain({ datos }) {
 
       <Card.Body>
         <hr />
-        <Card.Text>
+        
           <Nav
             activeKey="/home"
             onSelect={(selectedKey) => alert(`selected ${selectedKey}`)}
@@ -24,7 +24,7 @@ export default function CardAlbumMain({ datos }) {
               <Nav.Link eventKey="link-2">Camara</Nav.Link>
             </Nav.Item>
           </Nav>
-        </Card.Text>
+        
       </Card.Body>
     </Card>
   );

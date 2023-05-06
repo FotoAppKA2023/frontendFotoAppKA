@@ -36,12 +36,12 @@ const Footer = () => {
           <ul className="nav flex-column border-top">
             <li className="nav-item mb-2">
               <Link to={"/"} className="nav-link p-0 text-muted">
-                Crear cuenta
+                Crear cuenta/Iniciar Sesión
               </Link>
             </li>
             <li className="nav-item mb-2">
-              <Link to={"/"} className="nav-link p-0 text-muted">
-                Iniciar Sesión
+              <Link to={"/loginAdminUser"} className="nav-link p-0 text-muted">
+                Admin
               </Link>
             </li>
           </ul>
