@@ -3,11 +3,11 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import Nav from "react-bootstrap/Nav";
 import ListGroup from "react-bootstrap/ListGroup";
-import { AiOutlineEllipsis, AiOutlineUser } from "react-icons/ai";
+import { AiOutlineEllipsis, AiOutlineUser,AiOutlineHeart } from "react-icons/ai";
 
 export default function CardAlbumMain({ datos }) {
   return (
-    <Card style={{ width: "30%", height:"50vh" }}>
+    <Card style={{ width: "30%", height:"50vh" , backgroundColor:"#F0F1F2"}}>
       <ListGroup variant="flush">
         <ListGroup.Item>
           <div
@@ -19,7 +19,7 @@ export default function CardAlbumMain({ datos }) {
           >
             <AiOutlineUser />
             Nombre del usuario
-            <AiOutlineEllipsis />
+            <AiOutlineHeart />
           </div>
         </ListGroup.Item>
       </ListGroup>
@@ -27,13 +27,14 @@ export default function CardAlbumMain({ datos }) {
       
 
       <Card.Body>
-      <ListGroup variant="flush">
-        <ListGroup.Item>
+      <ListGroup  variant="flush">
+        <ListGroup.Item style={{backgroundColor:"#F0F1F2"}}>
           <div
             style={{
               display: "flex",
               alignItems: "center",
               justifyContent: "space-between",
+              
             }}
           >
           Descripcion: {datos.description}
