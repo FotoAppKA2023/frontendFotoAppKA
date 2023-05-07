@@ -5,7 +5,7 @@ import About from '../pages/About';
 import BackHelper from '../pages/BackHelper';
 import CrearRollo from '../pages/CrearRollo';
 import Login from '../pages/Login';
-import Register from '../pages/Register';
+import Admin from '../pages/Admin';
 import Dashboard from '../pages/Dashboard';
 
 export const router = createBrowserRouter([
@@ -31,8 +31,8 @@ export const router = createBrowserRouter([
 		element:<Login/>
 	},
 	{
-		path:'register/',
-		element:<Register/>
+		path:'loginAdminUser/',
+		element:<Admin/>
 	},
 	{
 		path:'dashboard/',

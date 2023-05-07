@@ -43,7 +43,7 @@ export default function CardAlbumMain({ datos }) {
       </ListGroup>
 
         <hr />
-        <Card.Text>
+        
           <Nav
              style={{
               display: "flex",
@@ -63,7 +63,7 @@ export default function CardAlbumMain({ datos }) {
               <Nav.Link eventKey="link-2">Camara</Nav.Link>
             </Nav.Item>
           </Nav>
-        </Card.Text>
+        
       </Card.Body>
     </Card>
   );
