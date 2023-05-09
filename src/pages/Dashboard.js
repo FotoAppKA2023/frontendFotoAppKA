@@ -9,16 +9,19 @@ import Footer from "../components/Footer/Footer";
 export default function Dashboard() {
   const [albumList, setAlbumList] = useState([]);
   const [usuariosList, setUsuariosList] = useState([]);
+  const [cardDatos, setCardDatos]= useState([])
   useEffect(() => {
-    obtenerUsuarios();
-    ObtenerAlbums();
+    ObtenerAlbums()
+   
   }, []);
 
   const obtenerUsuarios = async () => {
     const resultado = await getAllPhotoUser();
     try {
       if (resultado.data) {
+
         setUsuariosList(resultado?.data?.result);
+        
         console.log("lista de usuarios: ", usuariosList);
       }
     } catch {}
@@ -28,6 +31,8 @@ export default function Dashboard() {
       const resultado = await getAllAlbums();
       if (resultado.data) {
         setAlbumList(resultado?.data?.result);
+   
+        
         console.log("album Lista: ", albumList);
       }
     } catch (err) {}
@@ -38,7 +43,7 @@ export default function Dashboard() {
       <Navbar />
       <div
         style={{
-          
+          minHeight:"100vh",
           display: "flex",
           width: "100%",
           backgroundColor:"#5A5450"
@@ -71,12 +76,14 @@ export default function Dashboard() {
           </div>
         </aside>
         <main
+        className="d-flex flex-wrap gap-3"
           style={{
+            marginBottom:"5px",
             marginTop:"5vh",
             width: "70%",
-            display: "flex",
-            gap: "5%",
-            flexWrap: "wrap",
+            //display: "flex",
+            //Ugap: "5%",
+            //flexWrap: "wrap",
           }}
         >
           {albumList.map((card) => (
