@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { getAllAlbums } from "../api/apiAlbums";
 import Navbar from '../components/Navbar/Navbar';
 import Footer from '../components/Footer/Footer'
+import {myId} from '../lib/myLib';
 
 export default function Dashboard() {
   const [albumList, setAlbumList] = useState([]);
@@ -17,7 +18,7 @@ export default function Dashboard() {
       if (resultado.data) {
         //setAlbumList(resultado?.data?.result);
         setAlbumList(resultado?.data?.result);
-        console.log("album Lista: ",albumList);
+        console.log("album Lista: ",resultado.data);
       }
     } catch (err) {}
   };
@@ -66,7 +67,7 @@ export default function Dashboard() {
         >
           <h2 style={{ color: "black" }}>Albumes favoritos</h2>
           {albumList.map((card) => (
-            <CardAlbumAside datos={card} />
+            <CardAlbumAside key={myId()} datos={card} />
           ))}
           <h2 style={{ color: "black" }}>Rollos Favoritos</h2>
         </div>
@@ -80,7 +81,7 @@ export default function Dashboard() {
         }}
       >
           {albumList.map((card) => (
-            <CardAlbumMain  datos={card} />
+            <CardAlbumMain key={myId()} datos={card} />
           ))}
       </main>
     </div>
