@@ -5,88 +5,102 @@ import { getAllAlbums } from "../api/apiAlbums";
 import Navbar from '../components/Navbar/Navbar';
 import Footer from '../components/Footer/Footer'
 import {myId} from '../lib/myLib';
+import usePhoto from '../hooks/usePhoto';
+import { useNavigate } from "react-router";
 
 export default function Dashboard() {
   const [albumList, setAlbumList] = useState([]);
-  let cardsAside = [];
+  const [usuariosList, setUsuariosList] = useState([]);
+  const [cardDatos, setCardDatos]= useState([])
+  const [dataPhotoUser]= usePhoto();
+  const navigate = useNavigate();
   useEffect(() => {
-    ObtenerAlbums();
+    ObtenerAlbums()
+   
   }, []);
+  useEffect(()=>{
+    if(!dataPhotoUser.id){
+      navigate('/');
+    }
+  },[dataPhotoUser.id])
+
+  /*const obtenerUsuarios = async () => {
+    const resultado = await getAllPhotoUser();
+    try {
+      if (resultado.data) {
+
+        setUsuariosList(resultado?.data?.result);
+        
+        console.log("lista de usuarios: ", usuariosList);
+      }
+    } catch {}
+  };*/
   const ObtenerAlbums = async () => {
     try {
       const resultado = await getAllAlbums();
       if (resultado.data) {
-        //setAlbumList(resultado?.data?.result);
         setAlbumList(resultado?.data?.result);
-        console.log("album Lista: ",resultado.data);
+   
+        
+        console.log("Backend Response:.. ", resultado.data);
       }
     } catch (err) {}
   };
-  const albumModel = {
-    imagenUrl: "resultado.data.result[0].urlImages[0]",
-    idRollo: "2",
-    idScanner: "3",
-    idCamara: "4",
-  };
-  const rolloModel = {
-    imagenUrl:
-      "https://www.fotojapon.com/media/images/products/641/16787441857wHYk-350.jpg",
-    idRollo: "2",
-    idScanner: "3",
-    idCamara: "4",
-  };
 
   return (
-    <>
-    <Navbar/>
-<div
-      style={{
-        display: "flex",
-
-        width: "100%",
-      }}
-    >
-      <aside
+    < >
+      <Navbar />
+      <div
         style={{
-          width: "25%",
-          height: "100vh",
-
+          minHeight:"100vh",
           display: "flex",
+          width: "100%",
+          backgroundColor:"#5A5450"
         }}
       >
-        <div
+        <aside
           style={{
+            width: "25%",
+            height: "100vh",
+            marginTop:"5vh", 
             display: "flex",
-            width: "100%",
-            height: "100%",
-            flexDirection: "column",
-            overflowY: "scroll",
-            alignItems: "center",
-            justifyContent: "space-between",
           }}
         >
-          <h2 style={{ color: "black" }}>Albumes favoritos</h2>
-          {albumList.map((card) => (
-            <CardAlbumAside key={myId()} datos={card} />
-          ))}
-          <h2 style={{ color: "black" }}>Rollos Favoritos</h2>
-        </div>
-      </aside>
-      <main
-        style={{
-          width: "70%",
-          display: "flex",
-          gap: "5%",
-          flexWrap: "wrap",
-        }}
-      >
+          <div
+            style={{
+              display: "flex",
+              width: "100%",
+              height: "100%",
+              flexDirection: "column",
+              overflowY: "scroll",
+              alignItems: "center",
+              justifyContent: "space-between",
+            }}
+          >
+            <h2 style={{ color: "black" }}>Albumes favoritos</h2>
+            {albumList.map((card) => (
+              <CardAlbumAside key={myId()} datos={card} />
+            ))}
+            <h2 style={{ color: "black" }}>Rollos Favoritos</h2>
+          </div>
+        </aside>
+        <main
+        className="d-flex flex-wrap gap-3"
+          style={{
+            marginBottom:"5px",
+            marginTop:"5vh",
+            width: "70%",
+            //display: "flex",
+            //Ugap: "5%",
+            //flexWrap: "wrap",
+          }}
+        >
           {albumList.map((card) => (
             <CardAlbumMain key={myId()} datos={card} />
           ))}
-      </main>
-    </div>
-    <Footer/>
+        </main>
+      </div>
+      <Footer />
     </>
-    
   );
 }
