@@ -7,6 +7,8 @@ import CrearRollo from '../pages/CrearRollo';
 import Login from '../pages/Login';
 import Admin from '../pages/Admin';
 import Dashboard from '../pages/Dashboard';
+import albumDesplegado from '../pages/albumDesplegado';
+
 
 export const router = createBrowserRouter([
 	{
@@ -37,5 +39,9 @@ export const router = createBrowserRouter([
 	{
 		path:'dashboard/',
 		element:<Dashboard/>
+	},
+	{
+		path:'album-desplegado/',
+		element: <albumDesplegado/>
 	}
 ]);
