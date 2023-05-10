@@ -4,7 +4,7 @@ import Card from "react-bootstrap/Card";
 import Nav from "react-bootstrap/Nav";
 export default function CardAlbumAside({ datos }) {
   return (
-    <Card style={{ width: "75%" }}>
+    <Card style={{ width: "75%", marginBottom:"2vh" }}>
       <Card.Img variant="top" src={datos.urlImages[0]} />
 
       <Card.Body>
