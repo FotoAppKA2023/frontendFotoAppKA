@@ -55,8 +55,8 @@ const AppNavbar = ({sectionAdmin}) => {
     <Nav className="ms-auto">
       <Link className='nav-link' to={'/'}>Publicaciones</Link>
       <Link className='nav-link' to={'/crear-rollo'}>Rollos</Link>
-      <Link className='nav-link' to={'/'}>Camaras</Link>
-      <Link className='nav-link' to={'/'}>Scaners</Link>
+      <Link className='nav-link' to={'/crear-camara'}>Camaras</Link>
+      <Link className='nav-link' to={'/crear-scaner'}>Scaners</Link>
     </Nav>
   );
 

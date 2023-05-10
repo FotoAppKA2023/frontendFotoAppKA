@@ -1,4 +1,4 @@
-const nodeEnv = 'PRD';
+const nodeEnv = 'DEV';
 
 
 

@@ -8,6 +8,8 @@ import Login from '../pages/Login';
 import Admin from '../pages/Admin';
 import Dashboard from '../pages/Dashboard';
 import albumDesplegado from '../pages/albumDesplegado';
+import CrearScaner from '../pages/CrearScaner';
+import CrearCamara from '../pages/CrearCamara';
 
 
 export const router = createBrowserRouter([
@@ -27,6 +29,14 @@ export const router = createBrowserRouter([
 	{
 		path:'crear-rollo/',
 		element:<CrearRollo/>
+	},
+	{
+		path:'crear-scaner/',
+		element:<CrearScaner/>
+	},
+	{
+		path:'crear-camara/',
+		element:<CrearCamara/>
 	},
 	{
 		path:'login/',

@@ -11,11 +11,11 @@ export const getAllScaners = async()=>{
     
 }
 
-export const createNewScaner = async()=>{
+export const createNewScaner = async(formData)=>{
     const service = '/';
-    const method = 'post';
+    const method = 'postForm';
 
-    return await doRequestAxios(service,entity,method);
+    return await doRequestAxios(service,entity,method,formData);
     
 }
 
