@@ -28,7 +28,9 @@ function DetalleRollo({ rollo }) {
       <p>
       {descripcion}
       </p>
-      
+      <Button variant="primary" href={rollo.enlaceCompra} target="_blank">
+    ¿Donde comprar?
+  </Button>
 
       <div className="my-2">
         <span>Califica el rollo: </span>
