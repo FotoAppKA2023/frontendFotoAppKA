@@ -5,7 +5,10 @@ import About from '../pages/About';
 import BackHelper from '../pages/BackHelper';
 import CrearRollo from '../pages/CrearRollo';
 import Login from '../pages/Login';
-import Register from '../pages/Register';
+import Admin from '../pages/Admin';
+import Dashboard from '../pages/Dashboard';
+import AlbumDesplegado from '../pages/albumDesplegado';
+import UserProfile from '../pages/UserProfile';
 
 export const router = createBrowserRouter([
 	{
@@ -19,18 +22,30 @@ export const router = createBrowserRouter([
 	},
 	{
 		path: 'backHelper/',
-		element: <BackHelper/>
+		element: <BackHelper />,
 	},
 	{
-		path:'crear-rollo/',
-		element:<CrearRollo/>
+		path: 'crear-rollo/',
+		element: <CrearRollo />,
 	},
 	{
-		path:'login/',
-		element:<Login/>
+		path: 'login/',
+		element: <Login />,
 	},
 	{
-		path:'register/',
-		element:<Register/>
-	}
+		path: 'loginAdminUser/',
+		element: <Admin />,
+	},
+	{
+		path: 'dashboard/',
+		element: <Dashboard />,
+	},
+	{
+		path: 'album-desplegado/',
+		element: <AlbumDesplegado />,
+	},
+	{
+		path: 'profile/',
+		element: <UserProfile />,
+	},
 ]);

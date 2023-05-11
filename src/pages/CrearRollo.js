@@ -9,7 +9,12 @@ import Col from "react-bootstrap/Col";
 import { createNewRollo } from "../api/apiRollos";
 import Toast from "react-bootstrap/Toast";
 import ToastContainer from "react-bootstrap/ToastContainer";
-const inputFile = document.getElementById("file");
+import Navbar from '../components/Navbar/Navbar';
+import Footer  from "../components/Footer/Footer";
+
+
+
+//const inputFile = document.getElementById("file");
 const CrearRollo = () => {
   const [datos, setDatos] = React.useState({
     formato: "",
@@ -62,7 +67,10 @@ const CrearRollo = () => {
     });
   };
   return (
-    <Container>
+    <>
+    <Navbar sectionAdmin={true}/>
+    <Container className="my-3">
+      
       <Row>
         <Col></Col>
         <Col>
@@ -167,7 +175,10 @@ const CrearRollo = () => {
         </Col>
         <Col></Col>
       </Row>
+      
     </Container>
+    <Footer/>
+    </>
   );
 };
 

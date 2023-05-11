@@ -44,6 +44,10 @@
     ]
   },
   "devDependencies": {
+<<<<<<< HEAD
     "file-loader": "^6.2.0"
+=======
+    "@types/dropzone": "^5.7.4"
+>>>>>>> 32b9f921e58830b82bbf5c641a62373ebe85eb9e
   }
 }
