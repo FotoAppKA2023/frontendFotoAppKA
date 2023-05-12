@@ -77,7 +77,7 @@ const AppNavbar = () => {
         </Container>
       </Navbar>
       {/* <SeccionRollos show={showSeccionRollo} onHide={() => setShowSeccionRollo(false)} /> */}
-      <ModalCrearPublicacion show={showCrearPublicacionModal} onHide={() => setShowCrearPublicacionModal(false)} />
+      <ModalCrearPublicacion show={showCrearPublicacionModal} handleClose={() => setShowCrearPublicacionModal(false)} />
     </>
   );
 };
