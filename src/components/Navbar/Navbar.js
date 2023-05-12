@@ -15,9 +15,14 @@ const AppNavbar = () => {
     setShowCrearPublicacionModal(true);
   };
 
+
+
   const navLinks = (
     <Nav className="ms-auto">
-      <Nav.Link href="#rollos">Rollos</Nav.Link>
+      <Nav.Link href="#rollos">
+        Rollos
+    </Nav.Link>
+
       <Nav.Link href="#publicacion" onClick={handleCrearPublicacionClick}>
         Crear publicación
       </Nav.Link>
