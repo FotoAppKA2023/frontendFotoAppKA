@@ -20,7 +20,7 @@ const AdminDashboard = () => {
 
   return (
     <div>
-      <div className="d-flex flex-wrap justify-content-center">
+      <div className="py-3 d-flex flex-wrap gap-3 justify-content-center">
         {dataAlbums.map((album) => (
           <CardAlbumMain key={myId()} datos={album} />
         ))}

@@ -7,21 +7,21 @@ import { useNavigate } from 'react-router';
 import usePhoto from '../../hooks/usePhoto';
 import { Link } from 'react-router-dom';
 
-const AppNavbar = () => {
+const AppNavbar = ({sectionAdmin}) => {
   const [loggedIn, setLoggedIn] = useState(false);
   const [showCrearPublicacionModal, setShowCrearPublicacionModal] = useState(false);
   const [showSeccionRollo, setShowSeccionRollo] = useState(false);
   const navigate = useNavigate();
-  const [dataPhotoUser]=usePhoto();
+  const [dataPhotoUser,_,dataAdminUser]=usePhoto();
 
   useEffect(() => {
     
-    if(dataPhotoUser.isLogged){
+    if(dataPhotoUser.isLogged||dataAdminUser.isLogged){
       console.log('Usuario Logeado con exito:..');
       setLoggedIn(true);
     } 
     
-  }, [dataPhotoUser.isLogged])
+  }, [dataPhotoUser.isLogged,dataAdminUser.isLogged])
   
 
   const handleLogin = () => {
@@ -54,7 +54,7 @@ const AppNavbar = () => {
 
   const navAdminLinks = (
     <Nav className="ms-auto">
-      <Link className='nav-link' to={'/'}>Publicaciones</Link>
+      <Link className='nav-link' to={'/loginAdminUser'}>Publicaciones</Link>
       <Link className='nav-link' to={'/crear-rollo'}>Rollos</Link>
       <Link className='nav-link' to={'/crear-camara'}>Camaras</Link>
       <Link className='nav-link' to={'/crear-scaner'}>Scaners</Link>
@@ -73,7 +73,7 @@ const AppNavbar = () => {
           <Link style={{textDecoration:'none'}} to={'/dashboard'}>
           <Navbar.Brand>FILMOTECA</Navbar.Brand>
           </Link>
-          {loggedIn ? navLinks : loginButton}
+          {loggedIn ? (sectionAdmin?navAdminLinks:navLinks) : loginButton}
         </Container>
       </Navbar>
       {/* <SeccionRollos show={showSeccionRollo} onHide={() => setShowSeccionRollo(false)} /> */}

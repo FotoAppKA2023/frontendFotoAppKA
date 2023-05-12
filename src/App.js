@@ -26,7 +26,7 @@ const initDataAdminUser = {
 const App = () => {
   const [dataPhotoUser, setDataPhotoUser] = useState(initDataPhotoUser);
   const [dataAdminUser, setDataAdminUser] = useState(initDataAdminUser);
-  const router = dataPhotoUser.isLogged? routerPrivate:routerPublic;
+  const router = dataPhotoUser.isLogged||dataAdminUser.isLogged? routerPrivate:routerPublic;
   return (
     <div className="">
       <PhotoContext.Provider value={[dataPhotoUser,setDataPhotoUser,dataAdminUser,setDataAdminUser]} >

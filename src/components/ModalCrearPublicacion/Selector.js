@@ -62,7 +62,7 @@ const Selector = ({category,dataSelections,setDataSelections}) => {
     
     <Form.Select size="lg" value={selection} className='my-3' onChange={handleSelection}>
         <option>Seleccionar {category}:</option>
-        {opciones.map((item)=> <option key={myId()} value={item._id}>{item.nombre}</option> )}
+        {opciones.map((item)=> <option key={myId()} value={item._id}>{item.marca}</option> )}
     </Form.Select>  
 
     </Form.Group>

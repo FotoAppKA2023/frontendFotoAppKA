@@ -141,9 +141,9 @@ const ModalCrearPublicacion = ({ show, handleClose }) => {
         />
     </div>
     {opcionSeleccionada && ( <Selector category={opcionSeleccionada} dataSelections={dataSelections} setDataSelections={setDataSelections}/>)}
-    {dataSelections.Camara?.nombre && <h6 className='text-center'>Camara: <span className='text-secondary'>{dataSelections.Camara?.nombre}</span> </h6>}
-    {dataSelections.Scaner?.nombre && <h6 className='text-center'>Scaner: <span className='text-secondary'>{dataSelections.Scaner?.nombre}</span></h6>}
-    {dataSelections.Rollo?.nombre && <h6 className='text-center'>Rollo: <span className='text-secondary'>{dataSelections.Rollo?.nombre}</span></h6>}
+    {dataSelections.Camara?.marca && <h6 className='text-center'>Camara: <span className='text-secondary'>{dataSelections.Camara?.marca}</span> </h6>}
+    {dataSelections.Scaner?.marca && <h6 className='text-center'>Scaner: <span className='text-secondary'>{dataSelections.Scaner?.marca}</span></h6>}
+    {dataSelections.Rollo?.marca && <h6 className='text-center'>Rollo: <span className='text-secondary'>{dataSelections.Rollo?.marca}</span></h6>}
   </Card.Body>
 </Card>
 <Form.Group controlId="formDescripcion">
