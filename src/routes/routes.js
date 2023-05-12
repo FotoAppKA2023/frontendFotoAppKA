@@ -12,7 +12,28 @@ import CrearCamara from '../pages/CrearCamara';
 import AlbumDesplegado from '../pages/albumDesplegado';
 import UserProfile from '../pages/UserProfile';
 
-export const router = createBrowserRouter([
+
+export const routerPublic = createBrowserRouter([
+	{
+		path: '/',
+		element: <Home />,
+		errorElement: <Login />,
+	},
+	{
+		path: 'about/',
+		element: <About />,
+	},
+	{
+		path:'login/',
+		element:<Login/>
+	},
+	{
+		path: 'loginAdminUser/',
+		element: <Admin />,
+	}
+]);
+
+export const routerPrivate = createBrowserRouter([
 	{
 		path: '/',
 		element: <Home />,

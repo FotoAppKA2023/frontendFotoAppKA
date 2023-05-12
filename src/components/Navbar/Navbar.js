@@ -1,37 +1,40 @@
 import React, { useState, useEffect } from 'react';
 import './Navbar.css';
 import { Navbar, Container, Nav, Button } from 'react-bootstrap';
-import ModalCrearPublicacion from '../ModalCrearPublicacion/ModalCrearPublicacion';
+import ModalCrearPublicacion from '../ModalCrearPublicacion/ModalCrearPublicacion.js';
+import SeccionRollos from '../SeccionRollos/SeccionRollos';
 import { useNavigate } from 'react-router';
 import usePhoto from '../../hooks/usePhoto';
 import { Link } from 'react-router-dom';
 
-const AppNavbar = ({ sectionAdmin }) => {
-	const [loggedIn, setLoggedIn] = useState(false);
-	const [showCrearPublicacionModal, setShowCrearPublicacionModal] =
-		useState(false);
-	const navigate = useNavigate();
-	const [dataPhotoUser, _, dataAdminUser] = usePhoto();
+const AppNavbar = () => {
+  const [loggedIn, setLoggedIn] = useState(false);
+  const [showCrearPublicacionModal, setShowCrearPublicacionModal] = useState(false);
+  const [showSeccionRollo, setShowSeccionRollo] = useState(false);
+  const navigate = useNavigate();
+  const [dataPhotoUser]=usePhoto();
 
-	useEffect(() => {
-		if (dataPhotoUser.isLogged) {
-			console.log('Usuario Logeado con exito:..');
-			setLoggedIn(true);
-		}
-		if (dataAdminUser.isLogged) {
-			console.log('Usuario Admin Logeado con exito:..');
-			setLoggedIn(true);
-		}
-	}, [dataPhotoUser.isLogged, dataAdminUser.isLogged]);
+  useEffect(() => {
+    
+    if(dataPhotoUser.isLogged){
+      console.log('Usuario Logeado con exito:..');
+      setLoggedIn(true);
+    } 
+    
+  }, [dataPhotoUser.isLogged])
+  
 
-	const handleLogin = () => {
-		//setLoggedIn(true);
-		navigate('/login');
-	};
+  const handleLogin = () => {
+    //setLoggedIn(true);
+    navigate('/login');
+  };
 
-	const handleCrearPublicacionClick = () => {
-		setShowCrearPublicacionModal(true);
-	};
+  const handleCrearPublicacionClick = () => {
+    setShowCrearPublicacionModal(true);
+  };
+  const handleSeccionRolloClick = () => {
+    setShowSeccionRollo(true);
+  };
 
 	const navLinks = (
 		<Nav className="ms-auto">
@@ -63,25 +66,20 @@ const AppNavbar = ({ sectionAdmin }) => {
 		</Button>
 	);
 
-	return (
-		<>
-			<Navbar bg="dark" variant="dark">
-				<Container>
-					<Navbar.Brand>FILMOTECA</Navbar.Brand>
-					{!loggedIn && sectionAdmin && (
-						<h6 className="text-white">Section Admin</h6>
-					)}
-					{loggedIn && sectionAdmin && navAdminLinks}
-					{loggedIn && !sectionAdmin && navLinks}
-					{!loggedIn && !sectionAdmin && loginButton}
-				</Container>
-			</Navbar>
-			<ModalCrearPublicacion
-				show={showCrearPublicacionModal}
-				handleClose={() => setShowCrearPublicacionModal(false)}
-			/>
-		</>
-	);
+  return (
+    <>
+      <Navbar bg="dark" variant="dark">
+        <Container>
+          <Link style={{textDecoration:'none'}} to={'/dashboard'}>
+          <Navbar.Brand>FILMOTECA</Navbar.Brand>
+          </Link>
+          {loggedIn ? navLinks : loginButton}
+        </Container>
+      </Navbar>
+      {/* <SeccionRollos show={showSeccionRollo} onHide={() => setShowSeccionRollo(false)} /> */}
+      <ModalCrearPublicacion show={showCrearPublicacionModal} onHide={() => setShowCrearPublicacionModal(false)} />
+    </>
+  );
 };
 
 export default AppNavbar;
