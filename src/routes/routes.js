@@ -7,10 +7,10 @@ import CrearRollo from '../pages/CrearRollo';
 import Login from '../pages/Login';
 import Admin from '../pages/Admin';
 import Dashboard from '../pages/Dashboard';
-import albumDesplegado from '../pages/albumDesplegado';
 import CrearScaner from '../pages/CrearScaner';
 import CrearCamara from '../pages/CrearCamara';
-
+import AlbumDesplegado from '../pages/albumDesplegado';
+import UserProfile from '../pages/UserProfile';
 
 export const router = createBrowserRouter([
 	{
@@ -24,11 +24,11 @@ export const router = createBrowserRouter([
 	},
 	{
 		path: 'backHelper/',
-		element: <BackHelper/>
+		element: <BackHelper />,
 	},
 	{
-		path:'crear-rollo/',
-		element:<CrearRollo/>
+		path: 'crear-rollo/',
+		element: <CrearRollo />,
 	},
 	{
 		path:'crear-scaner/',
@@ -43,15 +43,19 @@ export const router = createBrowserRouter([
 		element:<Login/>
 	},
 	{
-		path:'loginAdminUser/',
-		element:<Admin/>
+		path: 'loginAdminUser/',
+		element: <Admin />,
 	},
 	{
-		path:'dashboard/',
-		element:<Dashboard/>
+		path: 'dashboard/',
+		element: <Dashboard />,
 	},
 	{
-		path:'album-desplegado/',
-		element: <albumDesplegado/>
-	}
+		path: 'album-desplegado/',
+		element: <AlbumDesplegado />,
+	},
+	{
+		path: 'profile/',
+		element: <UserProfile />,
+	},
 ]);
