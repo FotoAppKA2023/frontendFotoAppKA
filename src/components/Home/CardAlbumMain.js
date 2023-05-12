@@ -7,8 +7,8 @@ import { AiOutlineEllipsis, AiOutlineUser,AiOutlineHeart } from "react-icons/ai"
 
 export default function CardAlbumMain({ datos }) {
   return (
-    <a href="/albumdesplegado" style={{width:"100%"}}>
-         <Card style={{ width: "30%", height:"50vh" , backgroundColor:"#F0F1F2"}}>
+    <a href="/albumdesplegado" style={{width:"30%", border:"1px solid black"}}>
+         <Card style={{ width: "100%", height:"50vh" , backgroundColor:"#F0F1F2"}}>
       <ListGroup variant="flush">
         <ListGroup.Item>
           <div

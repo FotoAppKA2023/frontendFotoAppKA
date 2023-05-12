@@ -9,19 +9,17 @@ import Footer from "../components/Footer/Footer";
 export default function Dashboard() {
   const [albumList, setAlbumList] = useState([]);
   const [usuariosList, setUsuariosList] = useState([]);
-  const [cardDatos, setCardDatos]= useState([])
+  const [cardDatos, setCardDatos] = useState([]);
   useEffect(() => {
-    ObtenerAlbums()
-   
+    ObtenerAlbums();
   }, []);
 
   const obtenerUsuarios = async () => {
     const resultado = await getAllPhotoUser();
     try {
       if (resultado.data) {
-
         setUsuariosList(resultado?.data?.result);
-        
+
         console.log("lista de usuarios: ", usuariosList);
       }
     } catch {}
@@ -31,34 +29,35 @@ export default function Dashboard() {
       const resultado = await getAllAlbums();
       if (resultado.data) {
         setAlbumList(resultado?.data?.result);
-   
-        
+
         console.log("album Lista: ", albumList);
       }
     } catch (err) {}
   };
 
   return (
-    < >
+    <div style={{ width: "100%" }}>
       <Navbar />
       <div
         style={{
-          minHeight:"100vh",
+          border: "4px solid black",
+          minHeight: "100vh",
           display: "flex",
           width: "100%",
-          backgroundColor:"#5A5450"
+          backgroundColor: "#5A5450",
         }}
       >
         <aside
           style={{
             width: "25%",
             height: "100vh",
-            marginTop:"5vh", 
+            marginTop: "5vh",
             display: "flex",
           }}
         >
           <div
             style={{
+             
               display: "flex",
               width: "100%",
               height: "100%",
@@ -76,13 +75,16 @@ export default function Dashboard() {
           </div>
         </aside>
         <main
-        className="d-flex flex-wrap gap-3"
+          className="d-flex flex-wrap   gap-3"
           style={{
-            marginBottom:"5px",
-            marginTop:"5vh",
+            marginBottom: "5px",
+            marginTop: "5vh",
+            marginLeft:"5%",
             width: "70%",
+          
+      
             //display: "flex",
-            //Ugap: "5%",
+            //gap: "5%",
             //flexWrap: "wrap",
           }}
         >
@@ -92,6 +94,6 @@ export default function Dashboard() {
         </main>
       </div>
       <Footer />
-    </>
+    </div>
   );
 }
