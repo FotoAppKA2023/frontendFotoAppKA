@@ -7,7 +7,8 @@ import { AiOutlineEllipsis, AiOutlineUser,AiOutlineHeart } from "react-icons/ai"
 
 export default function CardAlbumMain({ datos }) {
   return (
-    <Card style={{ width: "30%", height:"50vh" , backgroundColor:"#F0F1F2"}}>
+    <a href="/albumdesplegado" style={{width:"100%"}}>
+         <Card style={{ width: "30%", height:"50vh" , backgroundColor:"#F0F1F2"}}>
       <ListGroup variant="flush">
         <ListGroup.Item>
           <div
@@ -37,14 +38,11 @@ export default function CardAlbumMain({ datos }) {
               
             }}
           >
-          Descripcion: {datos.description}
+          
           </div>
         </ListGroup.Item>
       </ListGroup>
-
-        <hr />
-        
-          <Nav
+      <Nav
              style={{
               display: "flex",
               alignItems: "center",
@@ -64,7 +62,11 @@ export default function CardAlbumMain({ datos }) {
             </Nav.Item>
           </Nav>
         
+        <hr />
+        Descripcion: {datos.description}
+          
       </Card.Body>
     </Card>
+    </a>
   );
 }
