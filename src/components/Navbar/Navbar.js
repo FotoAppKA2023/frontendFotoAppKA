@@ -5,6 +5,7 @@ import ModalCrearPublicacion from '../ModalCrearPublicacion/ModalCrearPublicacio
 import SeccionRollos from '../SeccionRollos/SeccionRollos';
 import { useNavigate } from 'react-router';
 import usePhoto from '../../hooks/usePhoto';
+import { Link } from 'react-router-dom';
 
 const AppNavbar = () => {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -49,11 +50,20 @@ const AppNavbar = () => {
     </Nav>
   );
 
-	const loginButton = (
-		<Button variant="warning" onClick={handleLogin}>
-			Iniciar Sesión
-		</Button>
-	);
+  const navAdminLinks = (
+    <Nav className="ms-auto">
+      <Link className='nav-link' to={'/'}>Publicaciones</Link>
+      <Link className='nav-link' to={'/crear-rollo'}>Rollos</Link>
+      <Link className='nav-link' to={'/crear-camara'}>Camaras</Link>
+      <Link className='nav-link' to={'/crear-scaner'}>Scaners</Link>
+    </Nav>
+  );
+
+  const loginButton = (
+    <Button variant="warning" onClick={handleLogin}>
+      Iniciar Sesión
+    </Button>
+  );
 
   return (
     <>

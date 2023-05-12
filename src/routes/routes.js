@@ -7,6 +7,8 @@ import CrearRollo from '../pages/CrearRollo';
 import Login from '../pages/Login';
 import Admin from '../pages/Admin';
 import Dashboard from '../pages/Dashboard';
+import CrearScaner from '../pages/CrearScaner';
+import CrearCamara from '../pages/CrearCamara';
 import AlbumDesplegado from '../pages/albumDesplegado';
 import UserProfile from '../pages/UserProfile';
 
@@ -29,8 +31,16 @@ export const router = createBrowserRouter([
 		element: <CrearRollo />,
 	},
 	{
-		path: 'login/',
-		element: <Login />,
+		path:'crear-scaner/',
+		element:<CrearScaner/>
+	},
+	{
+		path:'crear-camara/',
+		element:<CrearCamara/>
+	},
+	{
+		path:'login/',
+		element:<Login/>
 	},
 	{
 		path: 'loginAdminUser/',
