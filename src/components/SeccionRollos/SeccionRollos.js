@@ -105,6 +105,7 @@ function SeccionRollosImg() {
                   }}
                 >
                   <Card.Img
+                  
                     variant="top"
                     src={rollo?.imageUrl}
                     alt={rollo.nombre}
