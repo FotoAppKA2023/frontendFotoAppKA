@@ -23,7 +23,7 @@ function DetalleRollo({ rollo }) {
   return (
     <div>
       <h4>{rollo.nombre}</h4>
-      <img src={rollo.imagen.default} alt={rollo.nombre} />
+      <img src={rollo?.imageUrl} alt={rollo.nombre} />
       <h4>Titulo</h4>
       <p>
       {descripcion}

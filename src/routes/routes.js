@@ -11,6 +11,7 @@ import CrearScaner from '../pages/CrearScaner';
 import CrearCamara from '../pages/CrearCamara';
 import AlbumDesplegado from '../pages/albumDesplegado';
 import UserProfile from '../pages/UserProfile';
+import SeccionRollos from '../components/SeccionRollos/SeccionRollos';
 
 
 export const routerPublic = createBrowserRouter([
@@ -78,5 +79,9 @@ export const routerPrivate = createBrowserRouter([
 	{
 		path: 'profile/',
 		element: <UserProfile />,
+	},
+	{
+		path: 'rollos/',
+		element: <SeccionRollos />,
 	},
 ]);
