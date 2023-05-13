@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import './Navbar.css';
 import { Navbar, Container, Nav, Button } from 'react-bootstrap';
 import ModalCrearPublicacion from '../ModalCrearPublicacion/ModalCrearPublicacion.js';
-import SeccionRollos from '../SeccionRollos/SeccionRollos';
 import { useNavigate } from 'react-router';
 import usePhoto from '../../hooks/usePhoto';
 import { Link } from 'react-router-dom';
@@ -10,7 +9,6 @@ import { Link } from 'react-router-dom';
 const AppNavbar = ({sectionAdmin}) => {
   const [loggedIn, setLoggedIn] = useState(false);
   const [showCrearPublicacionModal, setShowCrearPublicacionModal] = useState(false);
-  const [showSeccionRollo, setShowSeccionRollo] = useState(false);
   const navigate = useNavigate();
   const [dataPhotoUser,_,dataAdminUser]=usePhoto();
 
@@ -32,13 +30,13 @@ const AppNavbar = ({sectionAdmin}) => {
   const handleCrearPublicacionClick = () => {
     setShowCrearPublicacionModal(true);
   };
-  const handleSeccionRolloClick = () => {
-    setShowSeccionRollo(true);
-  };
+
 
 	const navLinks = (
 		<Nav className="ms-auto">
-			<Nav.Link href="#rollos">Rollos</Nav.Link>
+		<Link className="nav-link" to="/rollos">
+        Rollos
+      </Link>
 
 			<Nav.Link href="#" onClick={handleCrearPublicacionClick}>
 				Crear publicación
@@ -76,7 +74,6 @@ const AppNavbar = ({sectionAdmin}) => {
           {loggedIn ? (sectionAdmin?navAdminLinks:navLinks) : loginButton}
         </Container>
       </Navbar>
-      {/* <SeccionRollos show={showSeccionRollo} onHide={() => setShowSeccionRollo(false)} /> */}
       <ModalCrearPublicacion show={showCrearPublicacionModal} handleClose={() => setShowCrearPublicacionModal(false)} />
     </>
   );

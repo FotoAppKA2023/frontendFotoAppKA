@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import Navbar from "../Navbar/Navbar";
+import {getAllRollos} from "../../api/apiRollos"
 import {
   Container,
   Row,
@@ -18,10 +20,11 @@ import foto6 from "../../assets/SeccionRollosImg/rollo6.jpeg";
 import foto7 from "../../assets/SeccionRollosImg/rollo7.jpeg";
 import foto8 from "../../assets/SeccionRollosImg/rollo8.jpeg";
 
+
 function SeccionRollosImg() {
   const [filtro, setFiltro] = useState("");
   const [vistosRecientemente, setVistosRecientemente] = useState([]);
-  const [rollos] = useState([
+  const [rollos, setRollos] = useState([
     { id: 1, nombre: "Rollo 1", imagen: foto1 },
     { id: 2, nombre: "Rollo 2", imagen: foto2 },
     { id: 3, nombre: "Rollo 3", imagen: foto3 },
@@ -34,6 +37,10 @@ function SeccionRollosImg() {
 
   const [showDrawer, setShowDrawer] = useState(false);
   const [selectedRollo, setSelectedRollo] = useState(null);
+
+  useEffect(() => {
+    cargardatos();
+  }, [])
 
   const handledCloseDrawer = () => {
     setShowDrawer(false);
@@ -55,11 +62,27 @@ function SeccionRollosImg() {
     ]);
   };
 
-  const rollosFiltrados = rollos.filter((rollo) =>
+  
+  const cargardatos = async() => {
+      try{
+        const result = await getAllRollos() 
+        console.log(result)
+        if(result?.data?.result){
+          setRollos([...result.data.result])
+        }
+      }catch(error){
+        console.log(error)
+      }
+      
+  }
+
+  const rollosFiltrados = rollos?.filter((rollo) =>
     rollo.nombre.toLowerCase().includes(filtro.toLowerCase())
   );
 
   return (
+    <>
+    <Navbar/>
     <Container fluid className="p-3">
       <Row>
         <Col md={8}>
@@ -73,7 +96,7 @@ function SeccionRollosImg() {
             </InputGroup>
           </div>
           <div className="mb-3 row">
-            {rollosFiltrados.map((rollo) => (
+            {rollos?.map((rollo) => (
               <div key={rollo.id} className="col-md-6">
                 <Card
                   onClick={() => {
@@ -83,7 +106,7 @@ function SeccionRollosImg() {
                 >
                   <Card.Img
                     variant="top"
-                    src={rollo.imagen.default}
+                    src={rollo?.imageUrl}
                     alt={rollo.nombre}
                   />
                   <Card.Body>
@@ -107,8 +130,9 @@ function SeccionRollosImg() {
                   <Card style={{ marginBottom: "10px" }}>
                     <Card.Img
                       variant="top"
-                      src={rollo.imagen.default}
+                      src={rollo?.imageURL}
                       alt={rollo.nombre}
+                      style={{width:"20%"}} 
                     />
                     <Card.Body onClick={() => agregarAVistosRecientes(rollo)}>
                       <Card.Title>{rollo.nombre}</Card.Title>
@@ -131,6 +155,7 @@ function SeccionRollosImg() {
         {selectedRollo && <DetalleRollo rollo={selectedRollo} />}
       </Drawer>
     </Container>
+    </>
   );
 }
 
