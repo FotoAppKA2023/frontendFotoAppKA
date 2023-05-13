@@ -2,19 +2,29 @@ import CardAlbumMain from "../components/Home/CardAlbumMain";
 import CardAlbumAside from "../components/Home/CardAlbumASide";
 import { useEffect, useState } from "react";
 import { getAllAlbums } from "../api/apiAlbums";
-import { getAllPhotoUser } from "../api/apiPhotoUser";
-import Navbar from "../components/Navbar/Navbar";
-import Footer from "../components/Footer/Footer";
+import Navbar from '../components/Navbar/Navbar';
+import Footer from '../components/Footer/Footer'
+import {myId} from '../lib/myLib';
+import usePhoto from '../hooks/usePhoto';
+import { useNavigate } from "react-router";
 
 export default function Dashboard() {
   const [albumList, setAlbumList] = useState([]);
   const [usuariosList, setUsuariosList] = useState([]);
   const [cardDatos, setCardDatos] = useState([]);
+  const [dataPhotoUser]= usePhoto();
+  const navigate = useNavigate();
   useEffect(() => {
     ObtenerAlbums();
   }, []);
+  
+  useEffect(()=>{
+    if(!dataPhotoUser.id){
+      navigate('/');
+    }
+  },[dataPhotoUser.id])
 
-  const obtenerUsuarios = async () => {
+  /*const obtenerUsuarios = async () => {
     const resultado = await getAllPhotoUser();
     try {
       if (resultado.data) {
@@ -23,7 +33,7 @@ export default function Dashboard() {
         console.log("lista de usuarios: ", usuariosList);
       }
     } catch {}
-  };
+  };*/
   const ObtenerAlbums = async () => {
     try {
       const resultado = await getAllAlbums();
@@ -69,7 +79,7 @@ export default function Dashboard() {
           >
             <h2 style={{ color: "black" }}>Albumes favoritos</h2>
             {albumList.map((card) => (
-              <CardAlbumAside datos={card} />
+              <CardAlbumAside key={myId()} datos={card} />
             ))}
             <h2 style={{ color: "black" }}>Rollos Favoritos</h2>
           </div>
@@ -89,7 +99,7 @@ export default function Dashboard() {
           }}
         >
           {albumList.map((card) => (
-            <CardAlbumMain datos={card} />
+            <CardAlbumMain key={myId()} datos={card} />
           ))}
         </main>
       </div>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import "./SesionCrearCuenta.css";
 import imgPohto from "../../assets/imgSesionCrearCuenta/imgPhoto.png";
@@ -51,7 +51,7 @@ const Login = () => {
     const resultLogin = await loginPhotoUser(dataLogin);
     console.log("resultLogin:..", resultLogin);
     const retrivedDataPhotoUser = { ...resultLogin?.data?.result?.dataPhotoUser };
-    if (retrivedDataPhotoUser) {
+    if (retrivedDataPhotoUser._id) {
       setDataPhotoUser({
         ...dataPhotoUser,
         nombre: retrivedDataPhotoUser.nombre,
@@ -59,9 +59,13 @@ const Login = () => {
         id: retrivedDataPhotoUser._id,
         isLogged: true,
       });
-      navigate('/dashboard');
+      
     }
   };
+  useEffect(() => {
+    if(dataPhotoUser.isLogged) navigate('/dashboard');  
+  }, [dataPhotoUser.isLogged])
+  
 
   const handleToggleForm = () => {
     setDataLogin({

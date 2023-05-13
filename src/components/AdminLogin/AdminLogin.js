@@ -26,8 +26,8 @@ const AdminLogin = () => {
     console.log('Enviando dataLogin:..',dataLogin);
     const resultLogin = await loginAdminUser(dataLogin);
     console.log('resultLogin:..',resultLogin);
-    const dataUser = resultLogin.data.dataUser;
-    if(dataUser._id){
+    const dataUser = resultLogin?.data?.dataUser;
+    if(dataUser?._id){
       setDataAdminUser({
         ...dataAdminUser,
         id: dataUser._id,

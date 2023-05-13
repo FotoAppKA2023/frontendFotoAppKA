@@ -13,9 +13,9 @@ import { useNavigate } from 'react-router';
  */
 
 const initDataSelections = {
-  Camara:'',
-  Scaner:'',
-  Rollo:''
+  Camara:{},
+  Scaner:{},
+  Rollo:{}
 }
 
 
@@ -52,9 +52,9 @@ const ModalCrearPublicacion = ({ show, handleClose }) => {
         description: descripcion,
         images: [...imagenes],
         photoUser_id: dataPhotoUser.id,
-        camera_id: dataSelections.Camara,
-        scaner_id: dataSelections.Scaner,
-        rollo_id: dataSelections.Rollo,
+        camera_id: dataSelections.Camara._id,
+        scaner_id: dataSelections.Scaner._id,
+        rollo_id: dataSelections.Rollo._id,
       }
       const resultEnvio = await postAlbum(formValues);
       console.log('resultEnvio:..',resultEnvio);
@@ -141,9 +141,9 @@ const ModalCrearPublicacion = ({ show, handleClose }) => {
         />
     </div>
     {opcionSeleccionada && ( <Selector category={opcionSeleccionada} dataSelections={dataSelections} setDataSelections={setDataSelections}/>)}
-    {dataSelections.Camara && <h6 className='text-center'>Camara: <span className='text-secondary'>{dataSelections.Camara}</span> </h6>}
-    {dataSelections.Scaner && <h6 className='text-center'>Scaner: <span className='text-secondary'>{dataSelections.Scaner}</span></h6>}
-    {dataSelections.Rollo && <h6 className='text-center'>Rollo: <span className='text-secondary'>{dataSelections.Rollo}</span></h6>}
+    {dataSelections.Camara?.marca && <h6 className='text-center'>Camara: <span className='text-secondary'>{dataSelections.Camara?.marca}</span> </h6>}
+    {dataSelections.Scaner?.marca && <h6 className='text-center'>Scaner: <span className='text-secondary'>{dataSelections.Scaner?.marca}</span></h6>}
+    {dataSelections.Rollo?.marca && <h6 className='text-center'>Rollo: <span className='text-secondary'>{dataSelections.Rollo?.marca}</span></h6>}
   </Card.Body>
 </Card>
 <Form.Group controlId="formDescripcion">
