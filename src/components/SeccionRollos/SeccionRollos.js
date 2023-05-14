@@ -95,17 +95,18 @@ function SeccionRollosImg() {
               />
             </InputGroup>
           </div>
-          <div className="mb-3 row">
+          <div className="mb-3 d-flex flex-wrap gap-2 justify-content-center">
             {rollos?.map((rollo) => (
-              <div key={rollo.id} className="col-md-6">
+              <div key={rollo.id} >
                 <Card
+                 style={{width:'25vw'}}
                   onClick={() => {
                     handledOpenDrawer(rollo);
                     agregarAVistosRecientes(rollo);
                   }}
                 >
                   <Card.Img
-                  
+                    width={'50%'}
                     variant="top"
                     src={rollo?.imageUrl}
                     alt={rollo.nombre}

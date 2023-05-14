@@ -6,6 +6,7 @@ import googleIcon from "../../assets/imgSesionCrearCuenta/logo_google_icon.png";
 import { loginPhotoUser } from "../../api/apiPhotoUser";
 import usePhoto from "../../hooks/usePhoto";
 import { useNavigate } from "react-router";
+import ErrorToast from "./ErrorToast";
 
 const formLabels = {
   name: "Nombre*",
@@ -32,12 +33,15 @@ const Login = () => {
   const navigate = useNavigate();
   const [dataPhotoUser, setDataPhotoUser] = usePhoto();
   const [isRegistering, setIsRegistering] = useState(false);
+  const [isShowToast, setIsShowToast] = useState(false);
+  const [errorForm, setErrorForm] = useState('');
   const [dataLogin, setDataLogin] = useState({
     nombre: "",
     email: "",
     password: "",
     confirmPassword: "",
     isRegister: isRegistering,
+    tyc:false
   });
   const formTitle = isRegistering ? "Crear cuenta" : "Iniciar sesión";
   const registerLink = isRegistering
@@ -47,6 +51,14 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     // handle form submission
+    const resultValForm= validateForm();
+
+    if(resultValForm?.resultValidate===false){
+      setErrorForm(resultValForm.msg||'');
+      setIsShowToast(true);
+      return
+    }
+
     console.log("Enviando dataLogin:", dataLogin);
     const resultLogin = await loginPhotoUser(dataLogin);
     console.log("resultLogin:..", resultLogin);
@@ -63,8 +75,15 @@ const Login = () => {
     }
   };
   useEffect(() => {
-    if(dataPhotoUser.isLogged) navigate('/dashboard');  
+    if(dataPhotoUser.isLogged){
+      console.log('El usuario ya esta logeado(SesionCrearCuenta):..')
+      navigate('/dashboard');
+    }   
   }, [dataPhotoUser.isLogged])
+
+  useEffect(()=>{
+    console.log('ValidandoForm:..',isShowToast)
+  },[isShowToast])
   
 
   const handleToggleForm = () => {
@@ -75,6 +94,10 @@ const Login = () => {
     setIsRegistering(!isRegistering);
   };
 
+  const handleCloseToast = ()=>{
+    setIsShowToast(false);
+}
+
   const handleChange = (e) => {
     //console.log(e.target.name,e.target.value);
     setDataLogin({
@@ -82,6 +105,72 @@ const Login = () => {
       [e.target.name]: e.target.value,
     });
   };
+
+  const validateForm = ()=>{
+    const expresionEmail =/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+    let resultValidate={
+      msg:'',
+      resultValidate: true
+    }
+
+    if(!dataLogin.email||!dataLogin.password){
+      resultValidate= {
+        msg:'Es necesario llenar los campos obligatorios',
+        resultValidate: false
+      }
+      return resultValidate
+    }
+
+    if(isRegistering&&(!dataLogin.confirmPassword||!dataLogin.nombre)){
+      resultValidate= {
+        msg:'Es necesario llenar los campos obligatorios',
+        resultValidate: false
+      }
+      return resultValidate
+    }
+
+    if(isRegistering&&(dataLogin.password!==dataLogin.confirmPassword)){
+      resultValidate= {
+        msg:'El password debe coincidir correctamente',
+        resultValidate: false
+      }
+      return resultValidate
+    }
+
+    if (!expresionEmail.test(String(dataLogin.email).toLowerCase())){
+      resultValidate= {
+        msg:'El e-mail debe tener un formato valido',
+        resultValidate: false
+      }
+      return resultValidate
+    }
+
+    if(dataLogin.password.length<8){
+      resultValidate= {
+        msg:'El password debe tener minimo 8 caracteres',
+        resultValidate: false
+      }
+      return resultValidate
+    }
+
+    if(!dataLogin.tyc){
+      resultValidate= {
+        msg:'Es necesario aceptar los términos y condiciones',
+        resultValidate: false
+      }
+      return resultValidate
+    }
+
+    
+  }
+  const handleTYC = (e)=>{
+    //console.log(e.target.checked);
+    setDataLogin({
+      ...dataLogin,
+      tyc:e.target.checked
+    })
+  }
 
   return (
     <div className="login-page">
@@ -91,8 +180,9 @@ const Login = () => {
             <div className="header">
               <h1 className="filmoteca">FILMOTECA</h1>
             </div>
-            <div className="formLogin">
+            <div className="">
               <h2 className="title">{formTitle}</h2>
+              {errorForm&& <ErrorToast msg={errorForm} isShowToast={isShowToast} handleCloseToast={handleCloseToast}/> }
               <a
                 className="google-link"
                 href="https://accounts.google.com/Login"
@@ -142,6 +232,8 @@ const Login = () => {
                   <Form.Group controlId="formBasicCheckbox">
                     <Form.Check
                       type="checkbox"
+                      onChange={handleTYC}
+                      value={dataLogin.tyc}
                       label={formLabels.acceptTerms}
                     />
                   </Form.Group>
@@ -150,7 +242,7 @@ const Login = () => {
                 <Button
                   variant="primary"
                   size="lg"
-                  className="d-block"
+                  className="d-block my-2"
                   type="submit"
                 >
                   {formTitle === "Iniciar sesión"

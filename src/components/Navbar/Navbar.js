@@ -6,18 +6,30 @@ import { useNavigate } from 'react-router';
 import usePhoto from '../../hooks/usePhoto';
 import { Link } from 'react-router-dom';
 
-const AppNavbar = ({sectionAdmin}) => {
+const AppNavbar = () => {
   const [loggedIn, setLoggedIn] = useState(false);
   const [showCrearPublicacionModal, setShowCrearPublicacionModal] = useState(false);
   const navigate = useNavigate();
   const [dataPhotoUser,_,dataAdminUser]=usePhoto();
+  const [isSectionAdmin, setIsSectionAdmin] = useState(false);
+
+  useEffect(()=>{
+    console.log('sectionAdmin:..',isSectionAdmin)
+  },[])
 
   useEffect(() => {
-    
-    if(dataPhotoUser.isLogged||dataAdminUser.isLogged){
-      console.log('Usuario Logeado con exito:..');
+    if(dataAdminUser.isLogged){
+      console.log('Usuario Admin logeado con exito:..',isSectionAdmin);
+      setIsSectionAdmin(true);
+      setLoggedIn(true);
+      //navigate('/adminHome');
+    } 
+    if(dataPhotoUser.isLogged){
+      console.log('Usuario PhotoUser logeado con exito:..',isSectionAdmin);
+      setIsSectionAdmin(false);
       setLoggedIn(true);
     } 
+    
     
   }, [dataPhotoUser.isLogged,dataAdminUser.isLogged])
   
@@ -52,7 +64,7 @@ const AppNavbar = ({sectionAdmin}) => {
 
   const navAdminLinks = (
     <Nav className="ms-auto">
-      <Link className='nav-link' to={'/loginAdminUser'}>Publicaciones</Link>
+      <Link className='nav-link' to={'/adminHome'}>Publicaciones</Link>
       <Link className='nav-link' to={'/crear-rollo'}>Rollos</Link>
       <Link className='nav-link' to={'/crear-camara'}>Camaras</Link>
       <Link className='nav-link' to={'/crear-scaner'}>Scaners</Link>
@@ -71,7 +83,10 @@ const AppNavbar = ({sectionAdmin}) => {
           <Link style={{textDecoration:'none'}} to={'/dashboard'}>
           <Navbar.Brand>FILMOTECA</Navbar.Brand>
           </Link>
-          {loggedIn ? (sectionAdmin?navAdminLinks:navLinks) : loginButton}
+          {loggedIn&&isSectionAdmin&&navAdminLinks}
+          {loggedIn&&!isSectionAdmin&&navLinks}
+          {!loggedIn&&loginButton}
+          
         </Container>
       </Navbar>
       <ModalCrearPublicacion show={showCrearPublicacionModal} handleClose={() => setShowCrearPublicacionModal(false)} />

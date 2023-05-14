@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { loginAdminUser } from '../../api/apiAdminUser';
 import usePhoto from '../../hooks/usePhoto';
+import { useNavigate } from 'react-router';
 
 const initDataLogin={
   email:'',
@@ -12,6 +13,16 @@ const initDataLogin={
 const AdminLogin = () => {
   const [dataLogin, setDataLogin] = useState(initDataLogin);
   const [_,__,dataAdminUser,setDataAdminUser]= usePhoto();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if(dataAdminUser.isLogged){
+      //navigate('/adminHome');
+    }
+  
+    
+  }, [dataAdminUser.isLogged])
+  
 
   const handleChange = (e)=>{
     //console.log(e.target.name,e.target.value);

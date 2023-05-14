@@ -2,9 +2,10 @@
 //iniciando con la rama dev
 
 import { RouterProvider } from "react-router";
-import { routerPrivate, routerPublic } from "./routes/routes";
-import { useState } from "react";
+import { routerPhotoUser, routerPublic, routerAdminUser } from "./routes/routes";
+import { useState,useEffect } from "react";
 import PhotoContext from "./context/PhotoContext";
+
 
 const initDataPhotoUser = {
   nombre: '',
@@ -26,7 +27,21 @@ const initDataAdminUser = {
 const App = () => {
   const [dataPhotoUser, setDataPhotoUser] = useState(initDataPhotoUser);
   const [dataAdminUser, setDataAdminUser] = useState(initDataAdminUser);
-  const router = dataPhotoUser.isLogged||dataAdminUser.isLogged? routerPrivate:routerPublic;
+  const [router, setRouter] = useState(routerPublic);
+  
+  
+  useEffect(() => {
+    if (dataAdminUser.isLogged){
+      setRouter(routerAdminUser);
+      
+    } 
+    if (dataPhotoUser.isLogged){
+      setRouter(routerPhotoUser);
+      
+    }
+  }, [dataAdminUser.isLogged,dataPhotoUser.isLogged])
+  
+   
   return (
     <div className="">
       <PhotoContext.Provider value={[dataPhotoUser,setDataPhotoUser,dataAdminUser,setDataAdminUser]} >

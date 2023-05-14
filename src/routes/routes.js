@@ -12,6 +12,7 @@ import CrearCamara from '../pages/CrearCamara';
 import AlbumDesplegado from '../pages/albumDesplegado';
 import UserProfile from '../pages/UserProfile';
 import SeccionRollos from '../components/SeccionRollos/SeccionRollos';
+import AdminHome from '../pages/AdminHome';
 
 
 export const routerPublic = createBrowserRouter([
@@ -34,7 +35,7 @@ export const routerPublic = createBrowserRouter([
 	}
 ]);
 
-export const routerPrivate = createBrowserRouter([
+export const routerPhotoUser = createBrowserRouter([
 	{
 		path: '/',
 		element: <Home />,
@@ -84,4 +85,65 @@ export const routerPrivate = createBrowserRouter([
 		path: 'rollos/',
 		element: <SeccionRollos />,
 	},
+	{
+		path: 'adminHome/',
+		element: <AdminHome />,
+	}
+]);
+
+export const routerAdminUser = createBrowserRouter([
+	{
+		path: 'adminHome/',
+		element: <AdminHome />,
+	},
+	{
+		path: '/',
+		element: <Home />,
+		errorElement: <Error />,
+	},
+	{
+		path: 'about/',
+		element: <About />,
+	},
+	{
+		path: 'backHelper/',
+		element: <BackHelper />,
+	},
+	{
+		path: 'crear-rollo/',
+		element: <CrearRollo />,
+	},
+	{
+		path:'crear-scaner/',
+		element:<CrearScaner/>
+	},
+	{
+		path:'crear-camara/',
+		element:<CrearCamara/>
+	},
+	{
+		path:'login/',
+		element:<Login/>
+	},
+	{
+		path: 'loginAdminUser/',
+		element: <Admin />,
+	},
+	{
+		path: 'dashboard/',
+		element: <Dashboard />,
+	},
+	{
+		path: 'album-desplegado/',
+		element: <AlbumDesplegado />,
+	},
+	{
+		path: 'profile/',
+		element: <UserProfile />,
+	},
+	{
+		path: 'rollos/',
+		element: <SeccionRollos />,
+	},
+	
 ]);
