@@ -63,6 +63,7 @@ const Login = () => {
     const resultLogin = await loginPhotoUser(dataLogin);
     console.log("resultLogin:..", resultLogin);
     const retrivedDataPhotoUser = { ...resultLogin?.data?.result?.dataPhotoUser };
+    const backToken= resultLogin?.data?.result?.token;
     if (retrivedDataPhotoUser._id) {
       setDataPhotoUser({
         ...dataPhotoUser,
@@ -70,8 +71,10 @@ const Login = () => {
         email: retrivedDataPhotoUser.email,
         id: retrivedDataPhotoUser._id,
         isLogged: true,
+        token: backToken?backToken:'',
+        tokenActive: true
       });
-      
+      window.localStorage.setItem('tokenPhotoUser',backToken?backToken:'')
     }
   };
   useEffect(() => {
@@ -154,7 +157,7 @@ const Login = () => {
       return resultValidate
     }
 
-    if(!dataLogin.tyc){
+    if(isRegistering&&!dataLogin.tyc){
       resultValidate= {
         msg:'Es necesario aceptar los términos y condiciones',
         resultValidate: false

@@ -1,10 +1,15 @@
 import axios from "axios";
 import { backendURL } from "../assets/constants";
 
-export const doRequestAxios = async (service, entity, method, data) => {
+
+export const doRequestAxios = async (service, entity, method, data,token) => {
+  const tokenPhotoUser= window.localStorage.getItem('tokenPhotoUser');
+  console.log('tokenPhotoUser: ',tokenPhotoUser);
+  if(tokenPhotoUser){
+    axios.defaults.headers.common['Authorization'] = tokenPhotoUser;
+  }
   try {
     let result = null;
-    
     switch (method) {
       case "get":
         console.log('dataAxios:..',data);
@@ -33,6 +38,7 @@ export const doRequestAxios = async (service, entity, method, data) => {
 
     return result;
   } catch (error) {
+    console.log('error axios:..',error)
     return error;
   }
 };

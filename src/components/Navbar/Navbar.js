@@ -5,12 +5,13 @@ import ModalCrearPublicacion from '../ModalCrearPublicacion/ModalCrearPublicacio
 import { useNavigate } from 'react-router';
 import usePhoto from '../../hooks/usePhoto';
 import { Link } from 'react-router-dom';
+import {GrLogout} from 'react-icons/gr';
 
 const AppNavbar = () => {
   const [loggedIn, setLoggedIn] = useState(false);
   const [showCrearPublicacionModal, setShowCrearPublicacionModal] = useState(false);
   const navigate = useNavigate();
-  const [dataPhotoUser,_,dataAdminUser]=usePhoto();
+  const [dataPhotoUser,setDataPhotoUser,dataAdminUser,setDataAdminUser,initDataPhotoUser,initDataAdminUser]=usePhoto();
   const [isSectionAdmin, setIsSectionAdmin] = useState(false);
 
   useEffect(()=>{
@@ -43,6 +44,11 @@ const AppNavbar = () => {
     setShowCrearPublicacionModal(true);
   };
 
+  const handleLogout= ()=>{
+    setDataPhotoUser(initDataPhotoUser);
+    setDataAdminUser(initDataAdminUser);
+  }
+
 
 	const navLinks = (
 		<Nav className="ms-auto">
@@ -57,6 +63,7 @@ const AppNavbar = () => {
 				Perfil
 			</Link>
 			<Nav.Link href="#about">Sobre nosotros</Nav.Link>
+      <Link to={'/'} onClick={handleLogout} className='btn btn-secondary'><GrLogout/></Link>
 		</Nav>
 	);
 
@@ -68,6 +75,7 @@ const AppNavbar = () => {
       <Link className='nav-link' to={'/crear-rollo'}>Rollos</Link>
       <Link className='nav-link' to={'/crear-camara'}>Camaras</Link>
       <Link className='nav-link' to={'/crear-scaner'}>Scaners</Link>
+      <Link to={'/'} onClick={handleLogout} className='btn btn-secondary'><GrLogout/></Link>
     </Nav>
   );
 	const loginButton = (

@@ -7,6 +7,7 @@ const entity= '/albums';
 export const getAllAlbums = async()=>{
     const service = '/allAlbums';
     const method = 'get';
+    //const data='';
 
     return await doRequestAxios(service,entity,method);
     
