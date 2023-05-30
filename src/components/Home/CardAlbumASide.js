@@ -2,6 +2,8 @@ import React from "react";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import Nav from "react-bootstrap/Nav";
+import { Link } from "react-router-dom";
+
 export default function CardAlbumAside({ datos }) {
   return (
     <Card style={{ width: "75%", marginBottom:"2vh" }}>
@@ -15,13 +17,13 @@ export default function CardAlbumAside({ datos }) {
             onSelect={(selectedKey) => alert(`selected ${selectedKey}`)}
           >
             <Nav.Item>
-              <Nav.Link href="/rollos/:id">Rollo</Nav.Link>
+              <Link to={"/rollos/:id"} >Rollo</Link>
             </Nav.Item>
             <Nav.Item>
-              <Nav.Link eventKey="link-1">Scanner</Nav.Link>
+              <Link to={"/rollos/:id"} >Scanner</Link>
             </Nav.Item>
             <Nav.Item>
-              <Nav.Link eventKey="link-2">Camara</Nav.Link>
+              <Link to={"/rollos/:id"} >Camara</Link>
             </Nav.Item>
           </Nav>
         

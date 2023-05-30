@@ -78,94 +78,96 @@ const CrearRollo = () => {
     <>
       <Navbar sectionAdmin={true} />
       <h2 className=" text-white bg-warning text-center p-2">Crear Rollo</h2>
-      <Container className="my-3">
-        <Row>
-          <Col></Col>
-          <Col>
+      <Container className="my-3 col-12 col-md-6">
+        
             <div>
               {!foto && (
                 <img
                   src={imagen}
                   style={{ width: "100px", marginLeft: "45%" }}
                   alt=""
-                  onClick={abrirInputFile}
+                  
                 />
               )}
-
-              {/* <Form.Group  className="mb-3">
-              <Form.Control
-                name="file"
-                id="file"
-                onChange={obtenerFile}
-                type="file"
-              />
-            </Form.Group> */}
               <UploadImage setDataImg={setFoto} />
             </div>
 
             <Form>
               <Form.Group className="mb-3">
-                <Form.Label>Formato</Form.Label>
-                <Form.Select name="formato" onChange={obtenerValor}>
-                  <option>10</option>
-                  <option>20</option>
-                  <option>30</option>
-                  <option>40</option>
-                </Form.Select>
+                
+                <label className="my-1 fs-5" htmlFor="formato">Formato:</label>
+                <Form.Control
+                  name="formato"
+                  value={datos.formato}
+                  onChange={obtenerValor}
+                  type="text"  
+                />
+                
               </Form.Group>
               <Form.Group className="mb-3">
-                <Form.Label>Marca</Form.Label>
-                <Form.Select name="marca" onChange={obtenerValor}>
-                  <option>10</option>
-                  <option>20</option>
-                  <option>30</option>
-                  <option>40</option>
-                </Form.Select>
+                
+                <label className="my-1 fs-5" htmlFor="marca">Marca:</label>
+                <Form.Control
+                  name="marca"
+                  value={datos.marca}
+                  onChange={obtenerValor}
+                  type="text"  
+                />
+                
               </Form.Group>
 
               <Form.Group className="mb-3">
-                <Form.Label>Nombre</Form.Label>
-                <Form.Select name="nombre" onChange={obtenerValor}>
-                  <option>10</option>
-                  <option>20</option>
-                  <option>30</option>
-                  <option>40</option>
-                </Form.Select>
-              </Form.Group>
-              <Form.Group className="mb-3">
-                <Form.Label>ISO</Form.Label>
-                <Form.Select name="iso" onChange={obtenerValor}>
-                  <option>10</option>
-                  <option>20</option>
-                  <option>30</option>
-                  <option>40</option>
-                </Form.Select>
-              </Form.Group>
-              <Form.Group className="mb-3">
-                <Form.Label>Grano</Form.Label>
-                <Form.Select name="grano" onChange={obtenerValor}>
-                  <option>10</option>
-                  <option>20</option>
-                  <option>30</option>
-                  <option>40</option>
-                </Form.Select>
-              </Form.Group>
-              <Form.Group className="mb-3">
-                <Form.Label>Numero de tomas</Form.Label>
-                <Form.Select name="tomas" onChange={obtenerValor}>
-                  <option>10</option>
-                  <option>20</option>
-                  <option>30</option>
-                  <option>40</option>
-                </Form.Select>
-              </Form.Group>
-              <Form.Group className="mb-3">
-                <Form.Label>Descripcion</Form.Label>
+                
+                <label className="my-1 fs-5" htmlFor="nombre">Nombre:</label>
                 <Form.Control
-                  name="descripcion"
+                  name="nombre"
+                  value={datos.nombre}
                   onChange={obtenerValor}
-                  type="text"
-                  placeholder="Ingresa la descripcion del rollo"
+                  type="text"  
+                />
+                
+              </Form.Group>
+              <Form.Group className="mb-3">
+                
+                <label className="my-1 fs-5" htmlFor="iso">ISO:</label>
+                <Form.Control
+                  name="iso"
+                  value={datos.iso}
+                  onChange={obtenerValor}
+                  type="text"  
+                />
+                
+              </Form.Group>
+              <Form.Group className="mb-3">
+                
+                <label className="my-1 fs-5" htmlFor="grano">Grano:</label>
+                <Form.Control
+                  name="grano"
+                  value={datos.grano}
+                  onChange={obtenerValor}
+                  type="text"  
+                />
+                
+              </Form.Group>
+              <Form.Group className="mb-3">
+                
+                <label className="my-1 fs-5" htmlFor="tomas">Número de Tomas:</label>
+                <Form.Control
+                  name="tomas"
+                  value={datos.tomas}
+                  onChange={obtenerValor}
+                  type="text"  
+                />
+                
+              </Form.Group>
+              <Form.Group className="mb-3">
+                
+                <label className="my-1 fs-5" htmlFor="description">Descripción:</label>
+                <Form.Control
+                  name="description"
+                  value={datos.description}
+                  onChange={obtenerValor}
+                  type="text"  
                 />
               </Form.Group>
               <ToastContainer style={{ marginTop: "10%" }} position="top-start">
@@ -182,11 +184,9 @@ const CrearRollo = () => {
                   <Toast.Body>Rollo Creado Correctamente</Toast.Body>
                 </Toast>
               </ToastContainer>
-              <Button onClick={imprimirDatos}>Agregar Rollo</Button>
+              <Button onClick={imprimirDatos}>Save</Button>
             </Form>
-          </Col>
-          <Col></Col>
-        </Row>
+         
       </Container>
       <Footer />
     </>

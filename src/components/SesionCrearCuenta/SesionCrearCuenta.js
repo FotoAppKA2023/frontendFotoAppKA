@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import "./SesionCrearCuenta.css";
 import imgPohto from "../../assets/imgSesionCrearCuenta/imgPhoto.png";
@@ -31,17 +31,28 @@ const FormField = ({ label, type, placeholder, value, onChange }) => (
 
 const Login = () => {
   const navigate = useNavigate();
-  const [dataPhotoUser, setDataPhotoUser] = usePhoto();
+  const [
+    dataPhotoUser,
+    setDataPhotoUser,
+    dataAdminUser,
+    setDataAdminUser,
+    initDataPhotoUser,
+    initDataAdminUser,
+    router,
+    setRouter,
+    routerPublic,
+    routerPhotoUser
+  ] = usePhoto();
   const [isRegistering, setIsRegistering] = useState(false);
   const [isShowToast, setIsShowToast] = useState(false);
-  const [errorForm, setErrorForm] = useState('');
+  const [errorForm, setErrorForm] = useState("");
   const [dataLogin, setDataLogin] = useState({
     nombre: "",
     email: "",
     password: "",
     confirmPassword: "",
     isRegister: isRegistering,
-    tyc:false
+    tyc: false,
   });
   const formTitle = isRegistering ? "Crear cuenta" : "Iniciar sesión";
   const registerLink = isRegistering
@@ -51,43 +62,49 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     // handle form submission
-    const resultValForm= validateForm();
+    const resultValForm = validateForm();
 
-    if(resultValForm?.resultValidate===false){
-      setErrorForm(resultValForm.msg||'');
+    if (resultValForm?.resultValidate === false) {
+      setErrorForm(resultValForm.msg || "");
       setIsShowToast(true);
-      return
+      return;
     }
 
     console.log("Enviando dataLogin:", dataLogin);
     const resultLogin = await loginPhotoUser(dataLogin);
     console.log("resultLogin:..", resultLogin);
-    const retrivedDataPhotoUser = { ...resultLogin?.data?.result?.dataPhotoUser };
-    const backToken= resultLogin?.data?.result?.token;
+    const retrivedDataPhotoUser = {
+      ...resultLogin?.data?.result?.dataPhotoUser,
+    };
+    const backToken = resultLogin?.data?.result?.token;
     if (retrivedDataPhotoUser._id) {
+      if(dataAdminUser.isLogged){
+        setDataAdminUser(initDataAdminUser);
+      }
+      setRouter(routerPhotoUser);
       setDataPhotoUser({
         ...dataPhotoUser,
         nombre: retrivedDataPhotoUser.nombre,
         email: retrivedDataPhotoUser.email,
         id: retrivedDataPhotoUser._id,
         isLogged: true,
-        token: backToken?backToken:'',
-        tokenActive: true
+        token: backToken ? backToken : "",
+        tokenActive: true,
       });
-      window.localStorage.setItem('tokenPhotoUser',backToken?backToken:'')
+      window.localStorage.setItem("tokenUser", backToken ? backToken : "");
     }
   };
   useEffect(() => {
-    if(dataPhotoUser.isLogged){
-      console.log('El usuario ya esta logeado(SesionCrearCuenta):..')
-      navigate('/dashboard');
-    }   
-  }, [dataPhotoUser.isLogged])
+    if (dataPhotoUser.isLogged&&(router===routerPhotoUser)) {
+      console.log("El usuario ya esta logeado(SesionCrearCuenta):..");
+      console.log('router:..',router?.routes)
+      navigate("/");
+    }
+  }, [dataPhotoUser.isLogged,router]);
 
-  useEffect(()=>{
-    console.log('ValidandoForm:..',isShowToast)
-  },[isShowToast])
-  
+  useEffect(() => {
+    //console.log("ValidandoForm:..", isShowToast);
+  }, [isShowToast]);
 
   const handleToggleForm = () => {
     setDataLogin({
@@ -97,9 +114,9 @@ const Login = () => {
     setIsRegistering(!isRegistering);
   };
 
-  const handleCloseToast = ()=>{
+  const handleCloseToast = () => {
     setIsShowToast(false);
-}
+  };
 
   const handleChange = (e) => {
     //console.log(e.target.name,e.target.value);
@@ -109,71 +126,70 @@ const Login = () => {
     });
   };
 
-  const validateForm = ()=>{
-    const expresionEmail =/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  const validateForm = () => {
+    const expresionEmail =
+      /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-    let resultValidate={
-      msg:'',
-      resultValidate: true
+    let resultValidate = {
+      msg: "",
+      resultValidate: true,
+    };
+
+    if (!dataLogin.email || !dataLogin.password) {
+      resultValidate = {
+        msg: "Es necesario llenar los campos obligatorios",
+        resultValidate: false,
+      };
+      return resultValidate;
     }
 
-    if(!dataLogin.email||!dataLogin.password){
-      resultValidate= {
-        msg:'Es necesario llenar los campos obligatorios',
-        resultValidate: false
-      }
-      return resultValidate
+    if (isRegistering && (!dataLogin.confirmPassword || !dataLogin.nombre)) {
+      resultValidate = {
+        msg: "Es necesario llenar los campos obligatorios",
+        resultValidate: false,
+      };
+      return resultValidate;
     }
 
-    if(isRegistering&&(!dataLogin.confirmPassword||!dataLogin.nombre)){
-      resultValidate= {
-        msg:'Es necesario llenar los campos obligatorios',
-        resultValidate: false
-      }
-      return resultValidate
+    if (isRegistering && dataLogin.password !== dataLogin.confirmPassword) {
+      resultValidate = {
+        msg: "El password debe coincidir correctamente",
+        resultValidate: false,
+      };
+      return resultValidate;
     }
 
-    if(isRegistering&&(dataLogin.password!==dataLogin.confirmPassword)){
-      resultValidate= {
-        msg:'El password debe coincidir correctamente',
-        resultValidate: false
-      }
-      return resultValidate
+    if (!expresionEmail.test(String(dataLogin.email).toLowerCase())) {
+      resultValidate = {
+        msg: "El e-mail debe tener un formato valido",
+        resultValidate: false,
+      };
+      return resultValidate;
     }
 
-    if (!expresionEmail.test(String(dataLogin.email).toLowerCase())){
-      resultValidate= {
-        msg:'El e-mail debe tener un formato valido',
-        resultValidate: false
-      }
-      return resultValidate
+    if (dataLogin.password.length < 8) {
+      resultValidate = {
+        msg: "El password debe tener minimo 8 caracteres",
+        resultValidate: false,
+      };
+      return resultValidate;
     }
 
-    if(dataLogin.password.length<8){
-      resultValidate= {
-        msg:'El password debe tener minimo 8 caracteres',
-        resultValidate: false
-      }
-      return resultValidate
+    if (isRegistering && !dataLogin.tyc) {
+      resultValidate = {
+        msg: "Es necesario aceptar los términos y condiciones",
+        resultValidate: false,
+      };
+      return resultValidate;
     }
-
-    if(isRegistering&&!dataLogin.tyc){
-      resultValidate= {
-        msg:'Es necesario aceptar los términos y condiciones',
-        resultValidate: false
-      }
-      return resultValidate
-    }
-
-    
-  }
-  const handleTYC = (e)=>{
+  };
+  const handleTYC = (e) => {
     //console.log(e.target.checked);
     setDataLogin({
       ...dataLogin,
-      tyc:e.target.checked
-    })
-  }
+      tyc: e.target.checked,
+    });
+  };
 
   return (
     <div className="login-page">
@@ -185,7 +201,13 @@ const Login = () => {
             </div>
             <div className="">
               <h2 className="title">{formTitle}</h2>
-              {errorForm&& <ErrorToast msg={errorForm} isShowToast={isShowToast} handleCloseToast={handleCloseToast}/> }
+              {errorForm && (
+                <ErrorToast
+                  msg={errorForm}
+                  isShowToast={isShowToast}
+                  handleCloseToast={handleCloseToast}
+                />
+              )}
               <a
                 className="google-link"
                 href="https://accounts.google.com/Login"
