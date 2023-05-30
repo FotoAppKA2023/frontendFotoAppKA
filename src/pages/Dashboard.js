@@ -8,6 +8,8 @@ import { myId } from "../lib/myLib";
 import usePhoto from "../hooks/usePhoto";
 import { useNavigate } from "react-router";
 import ErrorToast from "../components/SesionCrearCuenta/ErrorToast";
+import Spinner from 'react-bootstrap/Spinner';
+
 
 export default function Dashboard() {
   const [albumList, setAlbumList] = useState([]);
@@ -50,12 +52,14 @@ export default function Dashboard() {
   const ObtenerAlbums = async () => {
     try {
       const resultado = await getAllAlbums();
-      if (resultado.data) {
+      if (resultado?.data) {
         setAlbumList(resultado?.data?.result);
+        console.log("Backend Response:.. ", resultado);
+        return
       }
       console.log("Backend Response:.. ", resultado);
       if (resultado?.response?.status !== 200) {
-        console.log("Backend Error:.. ", resultado.response.data);
+        console.log("Backend Error:.. ", resultado?.response?.data);
         setDataPhotoUser({
           ...dataPhotoUser,
           tokenActive: false,
@@ -97,6 +101,7 @@ export default function Dashboard() {
             }}
           >
             <h2 style={{ color: "black" }}>Albumes favoritos</h2>
+            {albumList.length===0&&<Spinner/>}
             {albumList.map((card) => (
               <CardAlbumAside key={myId()} datos={card} />
             ))}
@@ -123,6 +128,7 @@ export default function Dashboard() {
             />
             </div>
           )}
+          {albumList.length===0&&<Spinner/>}
           {!showError&&albumList.map((card) => (
             <CardAlbumMain key={myId()} datos={card} />
           ))}

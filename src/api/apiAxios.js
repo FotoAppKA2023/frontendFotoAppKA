@@ -3,16 +3,16 @@ import { backendURL } from "../assets/constants";
 
 
 export const doRequestAxios = async (service, entity, method, data,token) => {
-  const tokenPhotoUser= window.localStorage.getItem('tokenPhotoUser');
-  console.log('tokenPhotoUser: ',tokenPhotoUser);
-  if(tokenPhotoUser){
-    axios.defaults.headers.common['Authorization'] = tokenPhotoUser;
+  const tokenUser= window.localStorage.getItem('tokenUser');
+  //console.log('tokenUser: ',tokenUser);
+  if(tokenUser){
+    axios.defaults.headers.common['Authorization'] = tokenUser;
   }
   try {
     let result = null;
     switch (method) {
       case "get":
-        console.log('dataAxios:..',data);
+        //console.log('dataAxios:..',data);
         result = await axios.get(`${backendURL}${entity}${service}`,{params:data});
         break;
       case "postForm":

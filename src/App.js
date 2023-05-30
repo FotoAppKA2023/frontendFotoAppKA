@@ -37,9 +37,16 @@ const App = () => {
   useEffect(() => {
     if (dataAdminUser.isLogged) {
       setRouter(routerAdminUser);
+      setDataPhotoUser(initDataPhotoUser);
     }
     if (dataPhotoUser.isLogged) {
       setRouter(routerPhotoUser);
+      setDataAdminUser(initDataAdminUser);
+    }
+    if(!dataAdminUser.isLogged&&!dataPhotoUser.isLogged){
+      setRouter(routerPublic);
+      setDataAdminUser(initDataAdminUser);
+      setDataPhotoUser(initDataPhotoUser);
     }
   }, [dataAdminUser.isLogged, dataPhotoUser.isLogged]);
 
@@ -53,6 +60,11 @@ const App = () => {
           setDataAdminUser,
           initDataPhotoUser,
           initDataAdminUser,
+          router,
+          setRouter,
+          routerPublic,
+          routerPhotoUser,
+          routerAdminUser
         ]}
       >
         <RouterProvider router={router} />

@@ -6,7 +6,7 @@ const UploadImage = ({setDataImg}) => {
   const handleChange = (e) => {
     const myImg = e.target.files[0];
     setDataImg(myImg);
-    setImages((images) => [...images, URL.createObjectURL(myImg)]);
+    setImages((images) => [URL.createObjectURL(myImg)]);
     return URL.revokeObjectURL(myImg)
   }
 
